@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         title = "Welcome " + (DataStore.shared.localUser?.username ?? "")
         tableView.dataSource = self
+        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
         getUsers()
     }
     
@@ -26,11 +27,13 @@ class HomeViewController: UIViewController {
             guard let self = self else {return}
             self.getUsers()
         }
+        DataStore.shared.setGameRequestListener()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         DataStore.shared.removeusersListeners()
+        DataStore.shared.removeGameRequestListener()
     }
     
     private func getUsers() {
@@ -50,9 +53,18 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.reuseIdentifier) as! UserCell
         let user = users[indexPath.row]
-        cell.userName.text = user.username
+        cell.setData(user: user)
+        cell.delegate = self
         return cell
+    }
+}
+
+extension HomeViewController: UserCellDelegate {
+    func requestGameWith(user: User) {
+        guard let userId = user.id else {return}
+        DataStore.shared.startGameRequest(userId: userId) { (user, error) in
+        }
     }
 }

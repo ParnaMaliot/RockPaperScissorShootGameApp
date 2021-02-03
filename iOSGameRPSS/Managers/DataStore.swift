@@ -10,10 +10,17 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class DataStore {
+    
+    enum FirebaseCollections: String {
+        case users
+        case gameRequests
+    }
+    
     static let shared = DataStore()
-    private let database = Firestore.firestore()
+    let database = Firestore.firestore()
     var localUser: User?
     var usersListener: ListenerRegistration?
+    var gameRequestListener: ListenerRegistration?
     init() {}
     
     func continueWithGuest(completion: @escaping(_ user: User?, _ error: Error?) -> Void) {
@@ -30,7 +37,7 @@ class DataStore {
     }
     
     func saveUser(user: User, completion: @escaping(_ user: User?, _ error: Error?) -> Void) {
-        let userRef = database.collection("users").document(user.id!)
+        let userRef = database.collection(FirebaseCollections.users.rawValue).document(user.id!)
         do {
             try userRef.setData(from: user) { error in
                 completion(user, error)
@@ -42,7 +49,7 @@ class DataStore {
     }
     
     func getAllUsers(completion: @escaping(_ users: [User]?, _ error: Error?) -> Void) {
-        let usersRef = database.collection("users")
+        let usersRef = database.collection(FirebaseCollections.users.rawValue)
         usersRef.getDocuments { (snapshot, error) in
             if let error = error {
                 completion(nil, error)
@@ -59,9 +66,8 @@ class DataStore {
         }
     }
     
-    
     func getUserWith(id: String, completion: @escaping(_ users: User?, _ error: Error?) -> Void) {
-        let userRef = database.collection("users").document(id)
+        let userRef = database.collection(FirebaseCollections.users.rawValue).document(id)
         
         userRef.getDocument(completion: {(document, error) in
             if let document = document {
@@ -80,7 +86,7 @@ class DataStore {
             usersListener?.remove()
             usersListener = nil
         }
-        let userRef = database.collection("users")
+        let userRef = database.collection(FirebaseCollections.users.rawValue)
         usersListener = userRef.addSnapshotListener { (snapshot, error) in
             if let snapshot = snapshot, snapshot.documents.count > 0 {
                 completion()

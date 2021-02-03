@@ -3,14 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		55ACED253639ACEF7CDA1A1A /* Pods_iOSGameRPSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968A6AB025CCC5A99E1CA3D8 /* Pods_iOSGameRPSS.framework */; };
+		CD9F619825CB160A009A3D6D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD9F619725CB160A009A3D6D /* SnapKit */; };
+		CD9F619C25CB1C7C009A3D6D /* UITableviewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */; };
+		CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619F25CB21AB009A3D6D /* GameRequest.swift */; };
+		CD9F61A325CB225B009A3D6D /* DataStore+GameRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F61A225CB225B009A3D6D /* DataStore+GameRequests.swift */; };
+		CD9F61A625CB2402009A3D6D /* Daye+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F61A525CB2402009A3D6D /* Daye+Extensions.swift */; };
 		CDAFBDED25C86D6700E33E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFBDEC25C86D6700E33E51 /* AppDelegate.swift */; };
 		CDAFBDEF25C86D6700E33E51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFBDEE25C86D6700E33E51 /* SceneDelegate.swift */; };
-		CDAFBDF125C86D6700E33E51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFBDF025C86D6700E33E51 /* ViewController.swift */; };
 		CDAFBDF425C86D6700E33E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAFBDF225C86D6700E33E51 /* Main.storyboard */; };
 		CDAFBDF625C86D6700E33E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDAFBDF525C86D6700E33E51 /* Assets.xcassets */; };
 		CDAFBDF925C86D6700E33E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDAFBDF725C86D6700E33E51 /* LaunchScreen.storyboard */; };
@@ -25,10 +29,13 @@
 /* Begin PBXFileReference section */
 		8116E9F18D9AB4D1E835E250 /* Pods-iOSGameRPSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGameRPSS.release.xcconfig"; path = "Target Support Files/Pods-iOSGameRPSS/Pods-iOSGameRPSS.release.xcconfig"; sourceTree = "<group>"; };
 		968A6AB025CCC5A99E1CA3D8 /* Pods_iOSGameRPSS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSGameRPSS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableviewCellExtensions.swift; sourceTree = "<group>"; };
+		CD9F619F25CB21AB009A3D6D /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
+		CD9F61A225CB225B009A3D6D /* DataStore+GameRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+GameRequests.swift"; sourceTree = "<group>"; };
+		CD9F61A525CB2402009A3D6D /* Daye+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Daye+Extensions.swift"; sourceTree = "<group>"; };
 		CDAFBDE925C86D6700E33E51 /* iOSGameRPSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSGameRPSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDAFBDEC25C86D6700E33E51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDAFBDEE25C86D6700E33E51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CDAFBDF025C86D6700E33E51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CDAFBDF325C86D6700E33E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDAFBDF525C86D6700E33E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDAFBDF825C86D6700E33E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55ACED253639ACEF7CDA1A1A /* Pods_iOSGameRPSS.framework in Frameworks */,
+				CD9F619825CB160A009A3D6D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +79,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD9F618E25CB1143009A3D6D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFBE1E25C8759B00E33E51 /* WelcomeViewController.swift */,
+				CDAFBE2125C875B500E33E51 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CD9F619025CB1151009A3D6D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFBE1B25C8701900E33E51 /* User.swift */,
+				CD9F619F25CB21AB009A3D6D /* GameRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CD9F619225CB1169009A3D6D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFBE2425C8783A00E33E51 /* UserCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CD9F619425CB119F009A3D6D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFBE1725C8700600E33E51 /* DataStore.swift */,
+				CD9F61A225CB225B009A3D6D /* DataStore+GameRequests.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CD9F619A25CB1C4C009A3D6D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */,
+				CD9F61A525CB2402009A3D6D /* Daye+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CDAFBDE025C86D6600E33E51 = {
 			isa = PBXGroup;
 			children = (
@@ -92,19 +144,18 @@
 		CDAFBDEB25C86D6700E33E51 /* iOSGameRPSS */ = {
 			isa = PBXGroup;
 			children = (
+				CD9F619A25CB1C4C009A3D6D /* Extensions */,
 				CDAFBDEC25C86D6700E33E51 /* AppDelegate.swift */,
 				CDAFBDEE25C86D6700E33E51 /* SceneDelegate.swift */,
-				CDAFBDF025C86D6700E33E51 /* ViewController.swift */,
 				CDAFBDF225C86D6700E33E51 /* Main.storyboard */,
 				CDAFBDF525C86D6700E33E51 /* Assets.xcassets */,
 				CDAFBDF725C86D6700E33E51 /* LaunchScreen.storyboard */,
 				CDAFBDFA25C86D6700E33E51 /* Info.plist */,
 				CDAFBE0125C86DA200E33E51 /* GoogleService-Info.plist */,
-				CDAFBE1725C8700600E33E51 /* DataStore.swift */,
-				CDAFBE1B25C8701900E33E51 /* User.swift */,
-				CDAFBE1E25C8759B00E33E51 /* WelcomeViewController.swift */,
-				CDAFBE2125C875B500E33E51 /* HomeViewController.swift */,
-				CDAFBE2425C8783A00E33E51 /* UserCell.swift */,
+				CD9F619425CB119F009A3D6D /* Managers */,
+				CD9F619025CB1151009A3D6D /* Models */,
+				CD9F618E25CB1143009A3D6D /* Controllers */,
+				CD9F619225CB1169009A3D6D /* Cells */,
 			);
 			path = iOSGameRPSS;
 			sourceTree = "<group>";
@@ -127,6 +178,9 @@
 			dependencies = (
 			);
 			name = iOSGameRPSS;
+			packageProductDependencies = (
+				CD9F619725CB160A009A3D6D /* SnapKit */,
+			);
 			productName = iOSGameRPSS;
 			productReference = CDAFBDE925C86D6700E33E51 /* iOSGameRPSS.app */;
 			productType = "com.apple.product-type.application";
@@ -154,6 +208,9 @@
 				Base,
 			);
 			mainGroup = CDAFBDE025C86D6600E33E51;
+			packageReferences = (
+				CD9F619625CB160A009A3D6D /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = CDAFBDEA25C86D6700E33E51 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -225,13 +282,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDAFBE2525C8783A00E33E51 /* UserCell.swift in Sources */,
-				CDAFBDF125C86D6700E33E51 /* ViewController.swift in Sources */,
 				CDAFBE1825C8700600E33E51 /* DataStore.swift in Sources */,
 				CDAFBDED25C86D6700E33E51 /* AppDelegate.swift in Sources */,
+				CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */,
+				CD9F619C25CB1C7C009A3D6D /* UITableviewCellExtensions.swift in Sources */,
 				CDAFBE1F25C8759B00E33E51 /* WelcomeViewController.swift in Sources */,
 				CDAFBE1C25C8701900E33E51 /* User.swift in Sources */,
 				CDAFBE2225C875B500E33E51 /* HomeViewController.swift in Sources */,
 				CDAFBDEF25C86D6700E33E51 /* SceneDelegate.swift in Sources */,
+				CD9F61A325CB225B009A3D6D /* DataStore+GameRequests.swift in Sources */,
+				CD9F61A625CB2402009A3D6D /* Daye+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +495,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD9F619625CB160A009A3D6D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD9F619725CB160A009A3D6D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD9F619625CB160A009A3D6D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CDAFBDE125C86D6600E33E51 /* Project object */;
 }
