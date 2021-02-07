@@ -16,8 +16,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Welcome " + (DataStore.shared.localUser?.username ?? "")
-        tableView.dataSource = self
-        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidReceiveGameRequestNotification"), object: nil)
+        setupTableView()
         getUsers()
     }
     
@@ -36,6 +36,31 @@ class HomeViewController: UIViewController {
         DataStore.shared.removeGameRequestListener()
     }
     
+    private func setupTableView() {
+        tableView.separatorStyle = .singleLine
+        tableView.dataSource = self
+        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
+    }
+    
+    @objc private func didReceiveGameRequest( _ notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String : GameRequest] else {return}
+        guard let gameRequest = userInfo["GameRequest"] else {return}
+        
+        let fromUserName = gameRequest.fromUserName ?? ""
+        let alert = UIAlertController(title: "Game Request", message: "\(fromUserName) invited you for a game", preferredStyle: .alert)
+        
+        let accept = UIAlertAction(title: "Accept", style: .default) { _ in
+            self.declineRequest(gameRequest: gameRequest)
+        }
+        let declne = UIAlertAction(title: "Decline", style: .cancel) { _ in
+            self.declineRequest(gameRequest: gameRequest)
+        }
+        
+        alert.addAction(accept)
+        alert.addAction(declne)
+        present(alert, animated: true, completion: nil)
+    }
+    
     private func getUsers() {
         DataStore.shared.getAllUsers { [weak self] (users, error) in
             guard let self = self else {return}
@@ -44,6 +69,10 @@ class HomeViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    private func declineRequest(gameRequest: GameRequest) {
+        DataStore.shared.deleteGameRequest(gameRequest: gameRequest)
     }
 }
 
@@ -65,6 +94,7 @@ extension HomeViewController: UserCellDelegate {
     func requestGameWith(user: User) {
         guard let userId = user.id else {return}
         DataStore.shared.startGameRequest(userId: userId) { (user, error) in
+            DataStore.shared.setGameRequestDeletionListener()
         }
     }
 }

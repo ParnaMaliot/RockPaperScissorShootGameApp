@@ -14,9 +14,15 @@ protocol UserCellDelegate: class {
 
 class UserCell: UITableViewCell {
     
+    private var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .red
+        return activityIndicator
+    }()
+    
     lazy var lblUserName: UILabel = {
        var label = UILabel()
-        label.textColor = .black
+//        label.textColor = .black
         label.backgroundColor = .white
         return label
     }()
@@ -24,6 +30,8 @@ class UserCell: UITableViewCell {
     private lazy var btnStart: UIButton = {
         var button = UIButton()
         button.setTitle("Start Game", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        button.setTitleColor(UIColor(named: "systemOposite"), for: .normal)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.cornerRadius = 5
@@ -38,6 +46,11 @@ class UserCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+//        let frame = CGRect.zero
+        selectionStyle = .none
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        This is the same function from above
+//        separatorInset = .zero
     }
     
     required init?(coder: NSCoder) {
@@ -47,6 +60,8 @@ class UserCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(lblUserName)
         contentView.addSubview(btnStart)
+        contentView.addSubview(activityIndicator)
+        activityIndicator.isHidden = true
         
         lblUserName.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(20)
@@ -59,11 +74,18 @@ class UserCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(20)
             make.width.equalTo(70)
         }
+        
+        activityIndicator.snp.makeConstraints { (make) in
+            make.center.equalTo(btnStart)
+        }
     }
     
     @objc private func onStart() {
         guard let user = user else {return}
         delegate?.requestGameWith(user: user)
+        btnStart.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
     
     func setData(user: User) {
