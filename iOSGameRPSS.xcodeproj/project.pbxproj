@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		55ACED253639ACEF7CDA1A1A /* Pods_iOSGameRPSS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968A6AB025CCC5A99E1CA3D8 /* Pods_iOSGameRPSS.framework */; };
+		CD133A6525D4528D00E3AC01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6425D4528D00E3AC01 /* LoadingView.swift */; };
+		CD133A6825D454BC00E3AC01 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6725D454BC00E3AC01 /* AvatarView.swift */; };
+		CD133A6E25D4630800E3AC01 /* extensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */; };
 		CD9F619825CB160A009A3D6D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD9F619725CB160A009A3D6D /* SnapKit */; };
 		CD9F619C25CB1C7C009A3D6D /* UITableviewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */; };
 		CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619F25CB21AB009A3D6D /* GameRequest.swift */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		8116E9F18D9AB4D1E835E250 /* Pods-iOSGameRPSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGameRPSS.release.xcconfig"; path = "Target Support Files/Pods-iOSGameRPSS/Pods-iOSGameRPSS.release.xcconfig"; sourceTree = "<group>"; };
 		968A6AB025CCC5A99E1CA3D8 /* Pods_iOSGameRPSS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSGameRPSS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD133A6425D4528D00E3AC01 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CD133A6725D454BC00E3AC01 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIColor.swift; sourceTree = "<group>"; };
 		CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableviewCellExtensions.swift; sourceTree = "<group>"; };
 		CD9F619F25CB21AB009A3D6D /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		CD9F61A225CB225B009A3D6D /* DataStore+GameRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+GameRequests.swift"; sourceTree = "<group>"; };
@@ -79,6 +85,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CD133A6325D4526400E3AC01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD133A6425D4528D00E3AC01 /* LoadingView.swift */,
+				CD133A6725D454BC00E3AC01 /* AvatarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CD9F618E25CB1143009A3D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +134,7 @@
 			children = (
 				CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */,
 				CD9F61A525CB2402009A3D6D /* Daye+Extensions.swift */,
+				CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,6 +160,7 @@
 		CDAFBDEB25C86D6700E33E51 /* iOSGameRPSS */ = {
 			isa = PBXGroup;
 			children = (
+				CD133A6325D4526400E3AC01 /* Views */,
 				CD9F619A25CB1C4C009A3D6D /* Extensions */,
 				CDAFBDEC25C86D6700E33E51 /* AppDelegate.swift */,
 				CDAFBDEE25C86D6700E33E51 /* SceneDelegate.swift */,
@@ -285,9 +302,12 @@
 				CDAFBE1825C8700600E33E51 /* DataStore.swift in Sources */,
 				CDAFBDED25C86D6700E33E51 /* AppDelegate.swift in Sources */,
 				CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */,
+				CD133A6825D454BC00E3AC01 /* AvatarView.swift in Sources */,
 				CD9F619C25CB1C7C009A3D6D /* UITableviewCellExtensions.swift in Sources */,
+				CD133A6525D4528D00E3AC01 /* LoadingView.swift in Sources */,
 				CDAFBE1F25C8759B00E33E51 /* WelcomeViewController.swift in Sources */,
 				CDAFBE1C25C8701900E33E51 /* User.swift in Sources */,
+				CD133A6E25D4630800E3AC01 /* extensionUIColor.swift in Sources */,
 				CDAFBE2225C875B500E33E51 /* HomeViewController.swift in Sources */,
 				CDAFBDEF25C86D6700E33E51 /* SceneDelegate.swift in Sources */,
 				CD9F61A325CB225B009A3D6D /* DataStore+GameRequests.swift in Sources */,

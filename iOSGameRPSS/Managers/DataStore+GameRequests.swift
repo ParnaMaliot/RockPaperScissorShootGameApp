@@ -29,7 +29,24 @@ extension DataStore {
         return GameRequest(id: id,
                            from: localUserId,
                            to: toUser,
-                           createdAt: Date().toMiliseconds(), fromUserName: localUser?.username)
+                           createdAt: Date().toMiliseconds(), fromUsername: localUser?.username)
+    }
+    
+    func checkForExistingGame(toUser: String, fromUser: String, completion: @escaping(_ exists: Bool, _ error: Error?) -> Void) {
+        let gameRequestRef = database.collection(FirebaseCollections.gameRequests.rawValue).whereField("from", isEqualTo: fromUser).whereField("to", isEqualTo: toUser)
+        
+        gameRequestRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(false, error)
+                return
+            }
+            
+            if let snapshot = snapshot, snapshot.documents.count > 0 {
+                completion(true, nil)
+                return
+            }
+            completion(false, nil)
+        }
     }
     
     func setGameRequestListener() {
@@ -44,7 +61,7 @@ extension DataStore {
                 if let snapshot = snapshot, let document = snapshot.documents.first {
                     do {
                         let gameRequest = try document.data(as: GameRequest.self)
-                        NotificationCenter.default.post(name: Notification.Name("DidReceiveGameRequestNotification"), object: nil, userInfo: ["GameRequests" : gameRequest as Any])
+                        NotificationCenter.default.post(name: Notification.Name("DidReceiveGameRequestNotification"), object: nil, userInfo: ["GameRequest" : gameRequest as Any])
                         print("New Game Request with " + (gameRequest?.from ?? ""))
                     } catch {
                         print(error.localizedDescription)
