@@ -95,8 +95,8 @@ class LoadingView: UIView {
         avatarMe.userName = me.username
         avatarOpponent.userName = opponent.username
         
-        avatarMe.image = me.avatarImage //"avatarMe"
-        avatarOpponent.image = opponent.avatarImage //"avatarOpponent"
+        avatarMe.image = me.avatarImage ?? "avatarOne"
+        avatarOpponent.image = opponent.avatarImage ?? "avatarTwo"
         lblRequestStatus.text = "Waiting opponent..."
     }
     
