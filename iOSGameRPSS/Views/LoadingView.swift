@@ -69,7 +69,7 @@ class LoadingView: UIView {
         }
         
         avatarMe.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(50)
             make.width.equalTo(130)
             make.height.equalTo(200)
             make.centerX.equalToSuperview()
@@ -77,6 +77,7 @@ class LoadingView: UIView {
         lblVs.snp.makeConstraints { make in
             make.size.equalTo(80)
             make.top.equalTo(avatarMe.snp.bottom).offset(25)
+            make.centerX.equalToSuperview()
         }
         avatarOpponent.snp.makeConstraints { make in
             make.width.equalTo(130)
@@ -86,9 +87,7 @@ class LoadingView: UIView {
         }
         lblRequestStatus.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-
             make.bottom.equalToSuperview().inset(30)
-            
         }
     }
     
@@ -96,8 +95,8 @@ class LoadingView: UIView {
         avatarMe.userName = me.username
         avatarOpponent.userName = opponent.username
         
-        avatarMe.image = "avatarMe"
-        avatarOpponent.image = "avatarOpponent"
+        avatarMe.image = me.avatarImage //"avatarMe"
+        avatarOpponent.image = opponent.avatarImage //"avatarOpponent"
         lblRequestStatus.text = "Waiting opponent..."
     }
     

@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-//MARK: - LoadingViewDataSource
+//MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
@@ -95,7 +95,7 @@ extension HomeViewController: UITableViewDataSource {
 //MARK: - UserCellDelegate
 extension HomeViewController: UserCellDelegate {
     func requestGameWith(user: User) {
-        guard let localUser = DataStore.shared.localUser, let localUserId = localUser.id, let userId = user.id else {return}
+        guard let userId = user.id, let localUser = DataStore.shared.localUser, let localUserId = localUser.id else {return}
         
         DataStore.shared.checkForExistingGame(toUser: userId, fromUser: localUserId) { (exists, error) in
             if let error  = error {
@@ -104,7 +104,8 @@ extension HomeViewController: UserCellDelegate {
                 return
             }
             if !exists {
-                DataStore.shared.startGameRequest(userId: userId) { (request, error) in
+                DataStore.shared.startGameRequest(userId: userId) { [weak self] (request, error) in
+                    guard let self = self else {return}
                     if request != nil {
                         DataStore.shared.setGameRequestDeletionListener()
                         self.setupLoadingView(me: localUser, opponent: user)
@@ -121,8 +122,9 @@ extension HomeViewController {
     
     func setupLoadingView(me: User, opponent: User) {
         if loadingView != nil {
-            loadingView?.removeFromSuperview()
-            loadingView = nil
+            hideLoadingView()
+//            loadingView?.removeFromSuperview()
+//            loadingView = nil
         }
         loadingView = LoadingView(me: me, opponent: opponent)
         
