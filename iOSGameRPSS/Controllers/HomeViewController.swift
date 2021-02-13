@@ -108,9 +108,8 @@ extension HomeViewController: UserCellDelegate {
                     guard let self = self else {return}
                     if request != nil {
                         DataStore.shared.setGameRequestDeletionListener()
-                        self.setupLoadingView(me: localUser, opponent: user)
+                        self.setupLoadingView(me: localUser, opponent: user, request: request)
                     }
-                    
                 }
             }
         }
@@ -120,18 +119,19 @@ extension HomeViewController: UserCellDelegate {
 //MARK: - LoadingViewHandling
 extension HomeViewController {
     
-    func setupLoadingView(me: User, opponent: User) {
+    func setupLoadingView(me: User, opponent: User, request: GameRequest?) {
         if loadingView != nil {
             hideLoadingView()
 //            loadingView?.removeFromSuperview()
 //            loadingView = nil
         }
-        loadingView = LoadingView(me: me, opponent: opponent)
+        loadingView = LoadingView(me: me, opponent: opponent, request: request)
         
         view.addSubview(loadingView!)
         loadingView?.snp.makeConstraints({ make in
             make.edges.equalToSuperview()
         })
+        tableView.reloadData()
     }
     
     func hideLoadingView() {
