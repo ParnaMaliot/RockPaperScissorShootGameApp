@@ -34,6 +34,7 @@
 		8116E9F18D9AB4D1E835E250 /* Pods-iOSGameRPSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSGameRPSS.release.xcconfig"; path = "Target Support Files/Pods-iOSGameRPSS/Pods-iOSGameRPSS.release.xcconfig"; sourceTree = "<group>"; };
 		968A6AB025CCC5A99E1CA3D8 /* Pods_iOSGameRPSS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSGameRPSS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0545F725D80F8E006C21EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CD05461525DAF463006C21EC /* iOSGameRPSS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSGameRPSS.entitlements; sourceTree = "<group>"; };
 		CD133A6425D4528D00E3AC01 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CD133A6725D454BC00E3AC01 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIColor.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 		CDAFBDEB25C86D6700E33E51 /* iOSGameRPSS */ = {
 			isa = PBXGroup;
 			children = (
+				CD05461525DAF463006C21EC /* iOSGameRPSS.entitlements */,
 				CD0545F625D80F7A006C21EC /* Helpers */,
 				CD133A6325D4526400E3AC01 /* Views */,
 				CD9F619A25CB1C4C009A3D6D /* Extensions */,
@@ -471,15 +473,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8T998FMSKS;
+				CODE_SIGN_ENTITLEMENTS = iOSGameRPSS/iOSGameRPSS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2LEJV6KBBG;
 				INFOPLIST_FILE = iOSGameRPSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.maliotparna.iOSGameRPSS.iOSGameRPSS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeacademy.rpcgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RPCGameDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -491,15 +496,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8T998FMSKS;
+				CODE_SIGN_ENTITLEMENTS = iOSGameRPSS/iOSGameRPSS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2LEJV6KBBG;
 				INFOPLIST_FILE = iOSGameRPSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.maliotparna.iOSGameRPSS.iOSGameRPSS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeacademy.rpcgame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RPCGameDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
