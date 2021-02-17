@@ -58,6 +58,8 @@ class LoadingView: UIView {
     private var gameRequest: GameRequest?
     private var elapsedSeconds = 0
     
+    var gameAccepted: ((_ game: Game) -> Void)?
+    
     init(me: User, opponent: User, request: GameRequest?) {
         self.me = me
         self.opponent = opponent
@@ -73,6 +75,7 @@ class LoadingView: UIView {
         // when superview is not nil then its "adsubview" method
         if newSuperview != nil {
             setupTimers()
+            setGameListener()
         }
         
         //when superview is "nil" then its remove superview
@@ -80,6 +83,14 @@ class LoadingView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setGameListener() {
+        DataStore.shared.setGameListener {[weak self](game, _) in
+            guard let game = game else {return}
+            self?.gameAccepted?(game)
+            self?.removeFromSuperview()
+        }
     }
     
     private func setupTimers() {
