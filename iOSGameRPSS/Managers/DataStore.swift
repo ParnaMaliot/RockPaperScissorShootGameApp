@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import FirebaseMessaging
 
 class DataStore {
     
@@ -21,13 +22,16 @@ class DataStore {
     let database = Firestore.firestore()
     var localUser: User? {
         didSet {
-            if localUser?.avatarImage == nil {
-              //  localUser?.avatarImage = avatars.randomElement()
-                localUser?.setRandomImage()
+//            if localUser?.avatarImage == nil {
+//              //  localUser?.avatarImage = avatars.randomElement()
+//                localUser?.setRandomImage()
+                if localUser?.deviceToken == nil {
+                    setPushToken()
+                }
                 guard let localUser = localUser else {return}
                 DataStore.shared.saveUser(user: localUser) { (_, _) in
                 }
-            }
+//            }
         }
     }
     var usersListener: ListenerRegistration?
@@ -37,14 +41,28 @@ class DataStore {
 
     init() {}
     
-    func continueWithGuest(completion: @escaping(_ user: User?, _ error: Error?) -> Void) {
+    func setPushToken() {
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+            print("FCM registration token: \(token)")
+            self.localUser?.deviceToken = token
+            self.saveUser(user: self.localUser!) {(_,_) in
+                
+            }
+          }
+        }
+    }
+    
+    func continueWithGuest(userName: String, completion: @escaping(_ user: User?, _ error: Error?) -> Void) {
         Auth.auth().signInAnonymously { (result, error) in
             if let error = error {
                 completion(nil, error)
                 return
             }
             if let currentUser = result?.user {
-                let localUser = User.createUser(id: currentUser.uid, username: "Parna")
+                let localUser = User.createUser(id: currentUser.uid, username: userName)
                 self.saveUser(user: localUser, completion: completion)
             }
         }

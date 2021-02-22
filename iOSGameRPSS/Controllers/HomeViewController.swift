@@ -47,8 +47,9 @@ class HomeViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         tableView.dataSource = self
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
     }
     
@@ -87,6 +88,7 @@ class HomeViewController: UIViewController {
     
     private func acceptGameRequest(_ gameRequest: GameRequest) {
         guard let localUser = DataStore.shared.localUser else {return}
+        
         DataStore.shared.getUserWith(id: gameRequest.from) { [weak self] (user, error) in
             if let error = error {
                 //TODO: Handle user not found properly
@@ -95,6 +97,7 @@ class HomeViewController: UIViewController {
             }
             if let user = user {
                 DataStore.shared.createGame(players: [localUser, user]) { (game, error) in
+                    DataStore.shared.deleteGameRequest(gameRequest: gameRequest)
                     if let error = error {
                         print(error.localizedDescription)
                         return

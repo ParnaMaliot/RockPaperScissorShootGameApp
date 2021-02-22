@@ -72,7 +72,7 @@ class LoadingView: UIView {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-        // when superview is not nil then its "adsubview" method
+        // when superview is not nil then its "addSubview" method
         if newSuperview != nil {
             setupTimers()
             setGameListener()

@@ -12,6 +12,7 @@
 		CD05461825DD8867006C21EC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05461725DD8867006C21EC /* Game.swift */; };
 		CD05461B25DD917A006C21EC /* Datastore+Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05461A25DD917A006C21EC /* Datastore+Game.swift */; };
 		CD05461E25DD9913006C21EC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05461D25DD9913006C21EC /* GameViewController.swift */; };
+		CD05462225E43695006C21EC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD05462125E43695006C21EC /* SplashViewController.swift */; };
 		CD133A6525D4528D00E3AC01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6425D4528D00E3AC01 /* LoadingView.swift */; };
 		CD133A6825D454BC00E3AC01 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6725D454BC00E3AC01 /* AvatarView.swift */; };
 		CD133A6E25D4630800E3AC01 /* extensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */; };
@@ -41,6 +42,7 @@
 		CD05461725DD8867006C21EC /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CD05461A25DD917A006C21EC /* Datastore+Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Datastore+Game.swift"; sourceTree = "<group>"; };
 		CD05461D25DD9913006C21EC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CD05462125E43695006C21EC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CD133A6425D4528D00E3AC01 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CD133A6725D454BC00E3AC01 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIColor.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				CDAFBE1E25C8759B00E33E51 /* WelcomeViewController.swift */,
 				CDAFBE2125C875B500E33E51 /* HomeViewController.swift */,
 				CD05461D25DD9913006C21EC /* GameViewController.swift */,
+				CD05462125E43695006C21EC /* SplashViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				CD133A6E25D4630800E3AC01 /* extensionUIColor.swift in Sources */,
 				CD05461B25DD917A006C21EC /* Datastore+Game.swift in Sources */,
 				CDAFBE2225C875B500E33E51 /* HomeViewController.swift in Sources */,
+				CD05462225E43695006C21EC /* SplashViewController.swift in Sources */,
 				CDAFBDEF25C86D6700E33E51 /* SceneDelegate.swift in Sources */,
 				CD9F61A325CB225B009A3D6D /* DataStore+GameRequests.swift in Sources */,
 				CD9F61A625CB2402009A3D6D /* Daye+Extensions.swift in Sources */,

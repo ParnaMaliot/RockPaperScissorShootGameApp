@@ -11,9 +11,21 @@ import GameplayKit
 
 class WelcomeViewController: UIViewController {
     
+    
+    @IBOutlet weak var txtUserName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtUserName.layer.cornerRadius =  10
+        txtUserName.layer.masksToBounds = true
+        txtUserName.returnKeyType = .continue
+        txtUserName.delegate = self
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        txtUserName.becomeFirstResponder()
     }
     
 //    let avatars = ["avatarOne", "avatarTwo", "avatarThree"]
@@ -28,18 +40,9 @@ class WelcomeViewController: UIViewController {
 
     
     @IBAction func onContinue(_ sender: UIButton) {
-        if Auth.auth().currentUser != nil, let id = Auth.auth().currentUser?.uid {
-            DataStore.shared.getUserWith(id: id) { [weak self] (user, error) in
-                guard let self = self else {return}
-
-                if let user = user {
-                    DataStore.shared.localUser = user
-                    self.performSegue(withIdentifier: "homeSegue", sender: nil)
-                }
-            }
-            return
-        }
-        DataStore.shared.continueWithGuest { [weak self] (user, error) in
+        guard let userName = txtUserName.text else {return}
+        
+        DataStore.shared.continueWithGuest(userName: userName) { [weak self] (user, error) in
             guard let self = self else {return}
             
             if let user = user {
@@ -47,5 +50,12 @@ class WelcomeViewController: UIViewController {
                 self.performSegue(withIdentifier: "homeSegue", sender: nil)
             }
         }
+    }
+}
+
+extension WelcomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
