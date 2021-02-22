@@ -87,10 +87,10 @@ class UserCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(holderView)
-        contentView.addSubview(lblUserName)
-        contentView.addSubview(btnStart)
+        holderView.addSubview(lblUserName)
+        holderView.addSubview(btnStart)
        // contentView.addSubview(activityIndicator)
-        contentView.addSubview(playerImage)
+        holderView.addSubview(playerImage)
 //        activityIndicator.isHidden = true
         
         lblUserName.snp.makeConstraints { (make) in
@@ -118,8 +118,8 @@ class UserCell: UITableViewCell {
         
         playerImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
-            make.top.equalTo(holderView).offset(20)
-//            make.top.equalToSuperview().offset(20)
+//            make.top.equalTo(holderView).offset(20)
+            make.top.equalToSuperview().offset(20)
             make.bottom.equalToSuperview().inset(15)
             make.width.equalTo(50)
         }
