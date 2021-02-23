@@ -28,34 +28,35 @@ class WelcomeViewController: UIViewController {
         txtUserName.becomeFirstResponder()
     }
     
-//    let avatars = ["avatarOne", "avatarTwo", "avatarThree"]
-//
-//    private func randomNumberAndAssignAvatar() -> String {
-//        let randomIndex = Int(arc4random_uniform(UInt32(avatars.count)))
-//        return avatars[randomIndex]
-////        let shuffled = GKMersenneTwisterRandomSource.sharedRandom().arrayByShufflingObjects(in: avatars)
-////        let firstRandom = shuffled[0]
-////        let secondRandom = shuffled[1]
-//    }
-
+    //    let avatars = ["avatarOne", "avatarTwo", "avatarThree"]
+    //
+    //    private func randomNumberAndAssignAvatar() -> String {
+    //        let randomIndex = Int(arc4random_uniform(UInt32(avatars.count)))
+    //        return avatars[randomIndex]
+    ////        let shuffled = GKMersenneTwisterRandomSource.sharedRandom().arrayByShufflingObjects(in: avatars)
+    ////        let firstRandom = shuffled[0]
+    ////        let secondRandom = shuffled[1]
+    //    }
+    
     
     func showError() {
         let alert = UIAlertController(title: "Error", message: "Username already in use", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func onContinue(_ sender: UIButton) {
         guard let userName = txtUserName.text else {return}
         DataStore.shared.continueWithGuest(userName: userName) { [weak self] (user, error) in
             guard let self = self else {return}
-
+            
             if let user = user {
                 DataStore.shared.localUser = user
                 self.performSegue(withIdentifier: "homeSegue", sender: nil)
-            }
-            else {
+            } else {
                 self.showError()
+                return
             }
         }
     }
