@@ -61,6 +61,17 @@ class DataStore {
                 completion(nil, error)
                 return
             }
+            let userNameRef = self.database.collection(FirebaseCollections.users.rawValue).whereField("username", isEqualTo: userName)
+            userNameRef.getDocuments { (document, error) in
+                if let document = document, document.count > 0 {
+                    print("username already exists")
+                    completion(nil, error)
+                    return
+                }
+                if let error = error {
+                    return
+                }
+            }
             if let currentUser = result?.user {
                 let localUser = User.createUser(id: currentUser.uid, username: userName)
                 self.saveUser(user: localUser, completion: completion)

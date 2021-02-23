@@ -39,15 +39,23 @@ class WelcomeViewController: UIViewController {
 //    }
 
     
+    func showError() {
+        let alert = UIAlertController(title: "Error", message: "Username already in use", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(confirm)
+    }
+    
     @IBAction func onContinue(_ sender: UIButton) {
         guard let userName = txtUserName.text else {return}
-        
         DataStore.shared.continueWithGuest(userName: userName) { [weak self] (user, error) in
             guard let self = self else {return}
-            
+
             if let user = user {
                 DataStore.shared.localUser = user
                 self.performSegue(withIdentifier: "homeSegue", sender: nil)
+            }
+            else {
+                self.showError()
             }
         }
     }
