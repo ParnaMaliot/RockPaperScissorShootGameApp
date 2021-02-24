@@ -110,9 +110,16 @@ class HomeViewController: UIViewController {
             
         }
     }
-    private func enterGame(_ game: Game) {
+    private func enterGame(_ game: Game, shouldUpdateGame: Bool = false) {
         DataStore.shared.removeGameListener()
-        performSegue(withIdentifier: "gameSegue", sender: game)
+        if shouldUpdateGame {
+            var newGame = game
+            newGame.state = .inProgress
+            DataStore.shared.updateGameStatus(game: newGame)
+            performSegue(withIdentifier: "gameSegue", sender: newGame)
+        } else {
+            performSegue(withIdentifier: "gameSegue", sender: game)
+        }
     }
     
     @IBAction func buttonExtend(_ sender: UIButton) {
@@ -196,7 +203,7 @@ extension HomeViewController {
         loadingView = LoadingView(me: me, opponent: opponent, request: request)
         
         loadingView?.gameAccepted = { [weak self] game in
-            self?.enterGame(game)
+            self?.enterGame(game, shouldUpdateGame: true)
         }
         
         view.addSubview(loadingView!)

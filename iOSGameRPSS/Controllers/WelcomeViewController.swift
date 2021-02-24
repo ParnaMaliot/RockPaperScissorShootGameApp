@@ -38,27 +38,32 @@ class WelcomeViewController: UIViewController {
     ////        let secondRandom = shuffled[1]
     //    }
     
+    @IBAction func onContinue(_ sender: UIButton) {
+        guard let userName = txtUserName.text?.lowercased() else {return}
+        
+        DataStore.shared.checkForExistingUserName(userName) { [weak self] (exists, _) in
+            if exists {
+                self?.showError(userName: userName)
+                return
+            }
+            
+            DataStore.shared.continueWithGuest(userName: userName) { [weak self] (user, error) in
+                guard let self = self else {return}
+                
+                if let user = user {
+                    DataStore.shared.localUser = user
+                    self.performSegue(withIdentifier: "homeSegue", sender: nil)
+                }
+            }
+        }
+    }
     
-    func showError() {
-        let alert = UIAlertController(title: "Error", message: "Username already in use", preferredStyle: .alert)
+    func showError(userName: String) {
+        //The title
+        let alert = UIAlertController(title: "Error", message: "Username \(userName) already in use", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func onContinue(_ sender: UIButton) {
-        guard let userName = txtUserName.text else {return}
-        DataStore.shared.continueWithGuest(userName: userName) { [weak self] (user, error) in
-            guard let self = self else {return}
-            
-            if let user = user {
-                DataStore.shared.localUser = user
-                self.performSegue(withIdentifier: "homeSegue", sender: nil)
-            } else {
-                self.showError()
-                return
-            }
-        }
     }
 }
 

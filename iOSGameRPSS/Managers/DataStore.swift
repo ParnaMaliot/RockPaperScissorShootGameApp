@@ -38,6 +38,7 @@ class DataStore {
     var gameRequestListener: ListenerRegistration?
     var gameRequestDeletionListener: ListenerRegistration?
     var gameListener: ListenerRegistration?
+    var gameStatusListener: ListenerRegistration?
     
     init() {}
     
@@ -55,22 +56,24 @@ class DataStore {
         }
     }
     
+    func checkForExistingUserName( _ userName: String, _ completion: @escaping(_ exists: Bool, _ error: Error?) -> Void) {
+        let userNameRef = self.database.collection(FirebaseCollections.users.rawValue).whereField("username", isEqualTo: userName)
+        
+        userNameRef.getDocuments { (snapshot, error)  in
+            if let snapshot = snapshot?.documents, snapshot.count == 0 {
+                completion(false, nil)
+                return
+            }
+            completion(true, nil)
+        }
+    }
+    
     func continueWithGuest(userName: String, completion: @escaping(_ user: User?, _ error: Error?) -> Void) {
+        
         Auth.auth().signInAnonymously { (result, error) in
-            
-            let userNameRef = self.database.collection(FirebaseCollections.users.rawValue).whereField("username", isEqualTo: userName)
-            
-            userNameRef.getDocuments { (document, error)  in
-                if let document = document, document.count > 0 {
-                    completion(nil, error)
-                    return
-                }
-                else {
-                    if let currentUser = result?.user {
-                        let localUser = User.createUser(id: currentUser.uid, username: userName)
-                        self.saveUser(user: localUser, completion: completion)
-                    }
-                }
+            if let currentUser = result?.user {
+                let localUser = User.createUser(id: currentUser.uid, username: userName)
+                self.saveUser(user: localUser, completion: completion)
             }
         }
     }
