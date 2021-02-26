@@ -29,20 +29,27 @@ class GameViewController: UIViewController {
         }
     }
     
-    func updateGame(updatedGame: Game) {
-        gameStatus.text = updatedGame.state.rawValue
-        
-        game = updatedGame
+    func showAlert(title: String, message: String?, isExit: Bool = true) {
+        let alert = UIAlertController(title: "Alert", message: "User left the game", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
     }
     
-    
-    
+    func updateGame(updatedGame: Game) {
+        gameStatus.text = updatedGame.state.rawValue
+        game = updatedGame
+        if updatedGame.state == .finished {
+            showAlert(title: "Congrats", message: "You won", isExit: true)
+        }
+    }
     
     @IBAction func onClose(_ sender: UIButton) {
         let alert = UIAlertController(title: nil, message: "Are you sure you want to exit?", preferredStyle: .alert)
         
         let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
             //We need to update the other player
+            DataStore.shared.updateGameStatus(game: self!.game!, newState: Game.GameState.finished.rawValue)
             self?.dismiss(animated: true, completion: nil)
         }
         

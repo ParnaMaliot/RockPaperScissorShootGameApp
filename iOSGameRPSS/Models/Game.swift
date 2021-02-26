@@ -11,7 +11,7 @@ struct Game: Codable {
     
     enum GameState: String, Codable {
         case starting
-        case inProgress
+        case inprogress
         case finished
     }
     

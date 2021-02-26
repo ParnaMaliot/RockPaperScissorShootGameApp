@@ -261,6 +261,9 @@
                                     <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
                                 </state>
+                                <connections>
+                                    <action selector="onClose:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="uyH-sq-wcq"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameBackground" translatesAutoresizingMaskIntoConstraints="NO" id="dN4-RP-qRe">
                                 <rect key="frame" x="0.0" y="245.5" width="414" height="405"/>

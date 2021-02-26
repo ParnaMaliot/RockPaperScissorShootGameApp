@@ -25,6 +25,21 @@ extension DataStore {
         }
     }
     
+    func checkForOngoingGameWith(userId: String, completion: @escaping(_ userInGame: Bool, _ error: Error?) -> Void) {
+        let gameRef = database.collection(FirebaseCollections.games.rawValue).whereField("playerIds", arrayContains: userId).whereField("state", isNotEqualTo: Game.GameState.finished.rawValue)
+        
+        gameRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(true, error)
+            }
+            if let snapshot = snapshot, snapshot.count > 0 {
+                completion(true, nil)
+                return
+            }
+            completion(false, nil)
+        }
+    }
+    
     func setGameListener(completion: @escaping(_ game: Game?, _ error: Error?) -> Void) {
         guard let localUserId = DataStore.shared.localUser?.id else {return}
         let gamesRef = database.collection(FirebaseCollections.games.rawValue).whereField("playerIds", arrayContains: localUserId).whereField("state", isEqualTo: Game.GameState.starting.rawValue)
@@ -78,12 +93,8 @@ extension DataStore {
         gameStatusListener = nil
     }
     
-    func updateGameStatus(game: Game) {
+    func updateGameStatus(game: Game, newState: String) {
         let gameRef = database.collection(FirebaseCollections.games.rawValue).document(game.id)
-        do {
-           try gameRef.setData(from: game)
-        } catch {
-            print(error.localizedDescription)
-        }
+        gameRef.updateData(["state": newState])
     }
 }

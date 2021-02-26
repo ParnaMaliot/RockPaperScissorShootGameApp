@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "525A3991-728C-4488-BC27-74762B5BC8F9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOSGameRPSS/Models/User.swift"
@@ -17,6 +17,82 @@
             startingLineNumber = "27"
             endingLineNumber = "27"
             landmarkName = "setRandomImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA941A80-1CD3-4CAC-9F18-EB1DCC0A13DB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/FirebaseFirestore/Firestore/core/src/util/executor_libdispatch.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "ExecutorLibdispatch::ExecuteBlocking(operation)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA941A80-1CD3-4CAC-9F18-EB1DCC0A13DB - 33dee39c375ece6a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firebase::firestore::util::ExecutorLibdispatch::ExecuteBlocking(std::__1::function&lt;void ()&gt;&amp;&amp;)"
+                  moduleName = "iOSGameRPSS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Parna/Desktop/SWIFT%20files/GithubParnaMaliotApps/RockPaperScissorShootGameApp/Pods/FirebaseFirestore/Firestore/core/src/util/executor_libdispatch.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  uuid = "BA941A80-1CD3-4CAC-9F18-EB1DCC0A13DB - 33dee39c375ece6a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firebase::firestore::util::ExecutorLibdispatch::ExecuteBlocking(std::__1::function&lt;void ()&gt;&amp;&amp;)"
+                  moduleName = "iOSGameRPSS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Parna/Desktop/SWIFT%20files/GithubParnaMaliotApps/RockPaperScissorShootGameApp/Pods/FirebaseFirestore/Firestore/core/src/util/executor_libdispatch.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "103">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "D6EEA375-6B41-464B-9246-481D71818BBD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "083D3CFC-308E-4B60-8BC2-C8DE2B606D7E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOSGameRPSS/Managers/Datastore+Game.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "checkForOngoingGameWith(userId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
