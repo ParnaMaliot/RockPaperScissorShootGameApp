@@ -8,7 +8,7 @@
 import UIKit
 
 class GameViewController: UIViewController {
-
+    
     @IBOutlet weak var gameStatus: UILabel!
     
     var game: Game?
@@ -29,12 +29,12 @@ class GameViewController: UIViewController {
         }
     }
     
-    func showAlert(title: String, message: String?, isExit: Bool = true) {
-        let alert = UIAlertController(title: "Alert", message: "User left the game", preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(confirm)
-        present(alert, animated: true, completion: nil)
-    }
+//    func showAlert(title: String, message: String?, isExit: Bool = true) {
+//        let alert = UIAlertController(title: "Alert", message: "User left the game", preferredStyle: .alert)
+//        let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
+//        alert.addAction(confirm)
+//        present(alert, animated: true, completion: nil)
+//    }
     
     func updateGame(updatedGame: Game) {
         gameStatus.text = updatedGame.state.rawValue
@@ -45,14 +45,19 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func onClose(_ sender: UIButton) {
-        let alert = UIAlertController(title: nil, message: "Are you sure you want to exit?", preferredStyle: .alert)
-        
+        showAlertWith(title: nil, message: "Are you sure you want to exit?")
+    }
+    
+    private func showAlertWith(title: String?, message: String?, isExit: Bool = true) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
-            //We need to update the other player
+            
+            if let game = self?.game, isExit {
             DataStore.shared.updateGameStatus(game: self!.game!, newState: Game.GameState.finished.rawValue)
+            }
             self?.dismiss(animated: true, completion: nil)
         }
-        
+        //We need to update the other player
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(exit)
