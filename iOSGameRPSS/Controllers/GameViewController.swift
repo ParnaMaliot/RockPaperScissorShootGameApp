@@ -40,7 +40,7 @@ class GameViewController: UIViewController {
         gameStatus.text = updatedGame.state.rawValue
         game = updatedGame
         if updatedGame.state == .finished {
-            showAlert(title: "Congrats", message: "You won", isExit: true)
+            showAlertWith(title: "Congrats", message: "You won", isExit: false)
         }
     }
     
