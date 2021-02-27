@@ -208,13 +208,24 @@
                                     <constraint firstAttribute="trailing" secondItem="ZoQ-Ju-Td3" secondAttribute="trailing" id="zYB-KG-MeQ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2U-Ss-PHw">
+                                <rect key="frame" x="18" y="84" width="200" height="57"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="dfI-uv-dh1"/>
+                                    <constraint firstAttribute="width" priority="750" constant="200" id="fHd-ya-eHH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oRo-Lq-jK3"/>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="0.98039215686274506" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8R3-M5-nHM" firstAttribute="centerX" secondItem="mzv-zt-F8x" secondAttribute="centerX" id="0hT-rh-xvg"/>
+                            <constraint firstItem="oRo-Lq-jK3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o2U-Ss-PHw" secondAttribute="trailing" constant="18" id="BGt-JI-lu6"/>
+                            <constraint firstItem="o2U-Ss-PHw" firstAttribute="top" secondItem="oRo-Lq-jK3" secondAttribute="top" constant="40" id="Ll2-cF-Lb7"/>
                             <constraint firstItem="Efm-wt-7Ui" firstAttribute="trailing" secondItem="oRo-Lq-jK3" secondAttribute="trailing" id="OgT-Wa-3xs"/>
                             <constraint firstItem="8R3-M5-nHM" firstAttribute="top" secondItem="oRo-Lq-jK3" secondAttribute="top" constant="60" id="T43-sa-UrK"/>
+                            <constraint firstItem="o2U-Ss-PHw" firstAttribute="leading" secondItem="oRo-Lq-jK3" secondAttribute="leading" constant="18" id="fsQ-06-ewU"/>
                             <constraint firstItem="Efm-wt-7Ui" firstAttribute="top" secondItem="8R3-M5-nHM" secondAttribute="bottom" id="ig0-jG-Xf8"/>
                             <constraint firstItem="Efm-wt-7Ui" firstAttribute="leading" secondItem="oRo-Lq-jK3" secondAttribute="leading" id="sRw-EO-Gha"/>
                             <constraint firstAttribute="bottom" secondItem="Efm-wt-7Ui" secondAttribute="bottom" id="vRE-ts-tOi"/>
@@ -222,6 +233,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Z5n-XU-dLS"/>
                     <connections>
+                        <outlet property="AvatarHolderView" destination="o2U-Ss-PHw" id="AOx-qS-CCs"/>
                         <outlet property="buttonExtension" destination="yL1-bd-V16" id="Zpj-fa-I9f"/>
                         <outlet property="tableHolderBottomConstraint" destination="gWq-1R-mW8" id="MzV-Gb-9eO"/>
                         <outlet property="tableHolderView" destination="ZoQ-Ju-Td3" id="5ci-FC-JUr"/>
@@ -271,25 +283,87 @@
                                     <constraint firstAttribute="height" constant="405" id="LWg-LJ-YzT"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4X-YK-bIu" userLabel="Random">
+                                <rect key="frame" x="167" y="772" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Ibc-f7-u1l"/>
+                                    <constraint firstAttribute="height" constant="80" id="Qyn-Qe-arA"/>
+                                </constraints>
+                                <state key="normal" image="random"/>
+                                <connections>
+                                    <action selector="btnRandom:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="J8h-Tc-QM9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uaz-Dx-qI5" userLabel="Rock">
+                                <rect key="frame" x="79" y="712" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="5jF-Uj-9CX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Cjg-b6-Wct"/>
+                                    <constraint firstAttribute="width" constant="80" id="RhX-Ig-QU8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="WUg-TD-rFB"/>
+                                </constraints>
+                                <state key="normal" image="rock"/>
+                                <connections>
+                                    <action selector="btnRock:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="czZ-OB-VeF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feS-9R-Yx7" userLabel="Scissors">
+                                <rect key="frame" x="255" y="712" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="AMs-hf-PF7"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Bdp-a9-Tgr"/>
+                                    <constraint firstAttribute="height" constant="80" id="ebT-gx-H1B"/>
+                                    <constraint firstAttribute="width" constant="80" id="yft-Zg-SaD"/>
+                                </constraints>
+                                <state key="normal" image="scisors"/>
+                                <connections>
+                                    <action selector="btnScissors:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="Lvd-up-zux"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-ht-BvX" userLabel="Paper">
+                                <rect key="frame" x="167" y="652" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1mB-sW-Z58"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="2X8-kj-xFO"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="HJ2-l8-xTQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="YLz-Fm-P6G"/>
+                                </constraints>
+                                <state key="normal" image="paper"/>
+                                <connections>
+                                    <action selector="btnPaper:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="syj-fH-m7K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2aA-qq-zqN"/>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.27058823529999998" blue="0.7843137255" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="m4F-hP-Gbf" firstAttribute="top" secondItem="2aA-qq-zqN" secondAttribute="top" constant="50" id="2ED-CH-5Y7"/>
                             <constraint firstItem="m4F-hP-Gbf" firstAttribute="leading" secondItem="2aA-qq-zqN" secondAttribute="leading" constant="20" id="34B-UD-ZW3"/>
+                            <constraint firstItem="feS-9R-Yx7" firstAttribute="leading" secondItem="n4X-YK-bIu" secondAttribute="trailing" constant="8" id="44X-Xj-Iwm"/>
+                            <constraint firstItem="2aA-qq-zqN" firstAttribute="bottom" secondItem="n4X-YK-bIu" secondAttribute="bottom" constant="10" id="6jU-ac-9uz"/>
                             <constraint firstAttribute="bottom" secondItem="TdN-55-qyX" secondAttribute="bottom" id="Fdj-ff-iSG"/>
                             <constraint firstItem="dN4-RP-qRe" firstAttribute="leading" secondItem="2aA-qq-zqN" secondAttribute="leading" id="Ikh-ob-QD9"/>
                             <constraint firstItem="014-ZO-hCM" firstAttribute="top" secondItem="2aA-qq-zqN" secondAttribute="top" id="Not-wG-qXk"/>
                             <constraint firstItem="2aA-qq-zqN" firstAttribute="trailing" secondItem="014-ZO-hCM" secondAttribute="trailing" constant="20" id="Obk-RN-P5d"/>
                             <constraint firstItem="TdN-55-qyX" firstAttribute="trailing" secondItem="2aA-qq-zqN" secondAttribute="trailing" id="Onk-YS-TIh"/>
                             <constraint firstItem="2aA-qq-zqN" firstAttribute="trailing" secondItem="dN4-RP-qRe" secondAttribute="trailing" id="Qb0-LF-V45"/>
+                            <constraint firstItem="n4X-YK-bIu" firstAttribute="top" secondItem="Uaz-Dx-qI5" secondAttribute="bottom" constant="-20" id="Qo7-KW-jmJ"/>
                             <constraint firstItem="TdN-55-qyX" firstAttribute="top" secondItem="V7n-hC-gf5" secondAttribute="top" id="Rby-ZM-Ws8"/>
+                            <constraint firstItem="n4X-YK-bIu" firstAttribute="leading" secondItem="Uaz-Dx-qI5" secondAttribute="trailing" constant="8" id="ULt-vd-6SP"/>
+                            <constraint firstItem="n4X-YK-bIu" firstAttribute="centerX" secondItem="V7n-hC-gf5" secondAttribute="centerX" id="Uku-jf-enT"/>
+                            <constraint firstItem="n4X-YK-bIu" firstAttribute="top" secondItem="Tva-ht-BvX" secondAttribute="bottom" constant="40" id="aBJ-Sd-uHD"/>
+                            <constraint firstItem="Tva-ht-BvX" firstAttribute="centerX" secondItem="V7n-hC-gf5" secondAttribute="centerX" id="p2Z-69-b2Y"/>
                             <constraint firstItem="TdN-55-qyX" firstAttribute="leading" secondItem="V7n-hC-gf5" secondAttribute="leading" id="uov-3d-oHT"/>
+                            <constraint firstItem="feS-9R-Yx7" firstAttribute="centerY" secondItem="Uaz-Dx-qI5" secondAttribute="centerY" id="z4p-Z5-d5B"/>
                             <constraint firstItem="dN4-RP-qRe" firstAttribute="centerY" secondItem="V7n-hC-gf5" secondAttribute="centerY" id="zwD-oZ-jeu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gkL-WY-OUx"/>
                     <connections>
+                        <outlet property="Paper" destination="Tva-ht-BvX" id="bSV-Pr-0UC"/>
+                        <outlet property="Random" destination="n4X-YK-bIu" id="gO4-ei-05h"/>
+                        <outlet property="Rock" destination="Uaz-Dx-qI5" id="6Zd-4O-3m3"/>
+                        <outlet property="Scissors" destination="feS-9R-Yx7" id="1yo-WK-CI8"/>
                         <outlet property="gameStatus" destination="m4F-hP-Gbf" id="jZ0-d9-ZpV"/>
                     </connections>
                 </viewController>
@@ -305,6 +379,10 @@
         <image name="buttonDown" width="50" height="50"/>
         <image name="gameBackground" width="412.5" height="407.5"/>
         <image name="gradientBackground" width="375" height="812"/>
+        <image name="paper" width="80" height="80"/>
+        <image name="random" width="80" height="80"/>
+        <image name="rock" width="80" height="80"/>
+        <image name="scisors" width="80" height="80"/>
         <image name="sparring" width="655" height="231"/>
         <image name="splashlogo" width="660" height="317"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

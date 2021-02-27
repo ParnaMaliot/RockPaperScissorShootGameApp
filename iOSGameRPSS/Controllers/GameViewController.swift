@@ -10,9 +10,13 @@ import UIKit
 class GameViewController: UIViewController {
     
     @IBOutlet weak var gameStatus: UILabel!
+    @IBOutlet weak var Paper: UIButton!
+    @IBOutlet weak var Scissors: UIButton!
+    @IBOutlet weak var Rock: UIButton!
+    @IBOutlet weak var Random: UIButton!
     
     var game: Game?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setGameStatusListener()
@@ -47,7 +51,8 @@ class GameViewController: UIViewController {
     @IBAction func onClose(_ sender: UIButton) {
         showAlertWith(title: nil, message: "Are you sure you want to exit?")
     }
-    
+    //isExit will be true every time the for the first player exits the game
+    //He needs to update the game to finish
     private func showAlertWith(title: String?, message: String?, isExit: Bool = true) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
@@ -64,4 +69,22 @@ class GameViewController: UIViewController {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func btnPaper(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func btnScissors(_ sender: UIButton) {
+        
+    }
+    
+    
+    @IBAction func btnRock(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func btnRandom(_ sender: UIButton) {
+        
+    }
+    
 }

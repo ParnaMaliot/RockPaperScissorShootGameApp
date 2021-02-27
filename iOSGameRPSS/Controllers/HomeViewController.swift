@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHolderView: UIView!
     @IBOutlet weak var buttonExtension: UIButton!
+    @IBOutlet weak var AvatarHolderView: UIView!
     
     @IBOutlet weak var tableHolderBottomConstraint: NSLayoutConstraint!
     var loadingView: LoadingView?
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
         title = "Welcome " + (DataStore.shared.localUser?.username ?? "")
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidReceiveGameRequestNotification"), object: nil)
         setupTableView()
+        setupAvatarView()
         getUsers()
     }
     
@@ -232,6 +234,16 @@ extension HomeViewController {
             make.edges.equalToSuperview()
         })
         tableView.reloadData()
+    }
+    
+    private func setupAvatarView() {
+        let avatarView = AvatarView(state: .imageAndName)
+        AvatarHolderView.addSubview(avatarView)
+        avatarView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
+        avatarView.userName = DataStore.shared.localUser?.username
+        avatarView.image = DataStore.shared.localUser?.avatarImage
     }
     
     func hideLoadingView() {
