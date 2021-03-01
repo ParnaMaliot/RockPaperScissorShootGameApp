@@ -22,10 +22,12 @@ struct Game: Codable {
     var winner: User?
     var createdAt: TimeInterval
     var state: GameState
+    var moves: [String: Moves]
     
-    init(id: String, players: [User]) {
+    init(id: String, players: [User], moves: [String: Moves]) {
         self.id = id
         self.players = players
+        self.moves = moves
         
         //compact map because we don't want "nil" values in the array
         playerIds = players.compactMap({$0.id})

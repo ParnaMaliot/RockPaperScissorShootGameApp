@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class LoadingView: UIView {
-
+    
     private lazy var avatarMe: AvatarView = {
         let avatar = AvatarView(state: .loading)
         return avatar
@@ -21,7 +21,7 @@ class LoadingView: UIView {
     }()
     
     private lazy var lblVs: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 56, weight: .heavy)
         label.textColor = UIColor(hex: "#FFB24C")
         label.text = "VS"
@@ -30,14 +30,14 @@ class LoadingView: UIView {
     }()
     
     private lazy var lblRequestStatus: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = UIColor(hex: "#FFB24C")
         return label
     }()
     
     private lazy var gradientView: UIImageView = {
-       let imageview = UIImageView(image: UIImage(named: "gradientBackground"))
+        let imageview = UIImageView(image: UIImage(named: "gradientBackground"))
         return imageview
     }()
     
@@ -130,11 +130,11 @@ class LoadingView: UIView {
         addSubview(lblRequestStatus)
         addSubview(btnClose)
         
-                   btnClose.snp.makeConstraints({ make in
-                    make.leading.top.equalToSuperview().inset(20)
-                    make.size.equalTo(50)
-                    
-                   })
+        btnClose.snp.makeConstraints({ make in
+            make.leading.top.equalToSuperview().inset(20)
+            make.size.equalTo(50)
+            
+        })
         
         gradientView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
