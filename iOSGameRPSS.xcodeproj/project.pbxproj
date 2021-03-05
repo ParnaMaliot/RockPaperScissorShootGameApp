@@ -17,6 +17,8 @@
 		CD133A6825D454BC00E3AC01 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6725D454BC00E3AC01 /* AvatarView.swift */; };
 		CD133A6E25D4630800E3AC01 /* extensionUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */; };
 		CD2FD95F25EC299B00117596 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2FD95E25EC299B00117596 /* GameLogic.swift */; };
+		CD2FD96225EE431100117596 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2FD96125EE431100117596 /* ResultViewController.swift */; };
+		CD2FD96625F2AB3300117596 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2FD96525F2AB3300117596 /* AlertPresenter.swift */; };
 		CD9F619825CB160A009A3D6D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD9F619725CB160A009A3D6D /* SnapKit */; };
 		CD9F619C25CB1C7C009A3D6D /* UITableviewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */; };
 		CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619F25CB21AB009A3D6D /* GameRequest.swift */; };
@@ -48,6 +50,8 @@
 		CD133A6725D454BC00E3AC01 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		CD133A6D25D4630800E3AC01 /* extensionUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIColor.swift; sourceTree = "<group>"; };
 		CD2FD95E25EC299B00117596 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		CD2FD96125EE431100117596 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		CD2FD96525F2AB3300117596 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableviewCellExtensions.swift; sourceTree = "<group>"; };
 		CD9F619F25CB21AB009A3D6D /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		CD9F61A225CB225B009A3D6D /* DataStore+GameRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+GameRequests.swift"; sourceTree = "<group>"; };
@@ -115,6 +119,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CD2FD96425F2AB2000117596 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CD2FD96525F2AB3300117596 /* AlertPresenter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CD9F618E25CB1143009A3D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +134,7 @@
 				CDAFBE2125C875B500E33E51 /* HomeViewController.swift */,
 				CD05461D25DD9913006C21EC /* GameViewController.swift */,
 				CD05462125E43695006C21EC /* SplashViewController.swift */,
+				CD2FD96125EE431100117596 /* ResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +199,7 @@
 		CDAFBDEB25C86D6700E33E51 /* iOSGameRPSS */ = {
 			isa = PBXGroup;
 			children = (
+				CD2FD96425F2AB2000117596 /* Protocols */,
 				CD05461525DAF463006C21EC /* iOSGameRPSS.entitlements */,
 				CD0545F625D80F7A006C21EC /* Helpers */,
 				CD133A6325D4526400E3AC01 /* Views */,
@@ -327,7 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDAFBE2525C8783A00E33E51 /* UserCell.swift in Sources */,
+				CD2FD96625F2AB3300117596 /* AlertPresenter.swift in Sources */,
 				CDAFBE1825C8700600E33E51 /* DataStore.swift in Sources */,
+				CD2FD96225EE431100117596 /* ResultViewController.swift in Sources */,
 				CDAFBDED25C86D6700E33E51 /* AppDelegate.swift in Sources */,
 				CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */,
 				CD05461E25DD9913006C21EC /* GameViewController.swift in Sources */,

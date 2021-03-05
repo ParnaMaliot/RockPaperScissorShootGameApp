@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, AlertPresenter {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableHolderView: UIView!
@@ -51,7 +51,6 @@ class HomeViewController: UIViewController {
     private func setupTableView() {
         tableView.separatorStyle = .none
         tableView.dataSource = self
-        
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
     }
     
@@ -112,6 +111,7 @@ class HomeViewController: UIViewController {
             
         }
     }
+    
     private func enterGame(_ game: Game, shouldUpdateGame: Bool = false) {
         DataStore.shared.removeGameListener()
         if shouldUpdateGame {
@@ -199,7 +199,6 @@ extension HomeViewController: UserCellDelegate {
         DataStore.shared.startGameRequest(userId: userId) { [weak self] (request, error) in
             guard let self = self else {return}
             if request != nil {
-                DataStore.shared.setGameRequestDeletionListener()
                 self.setupLoadingView(me: localUser, opponent: opponent, request: request)
             }
         }
@@ -223,7 +222,7 @@ extension HomeViewController {
 //            loadingView = nil
         }
         
-        loadingView = LoadingView(me: me, opponent: opponent, request: request)
+        loadingView = LoadingView(me: me, opponent: opponent, request: request, alertPresenter: self)
         
         loadingView?.gameAccepted = { [weak self] game in
             self?.enterGame(game, shouldUpdateGame: true)

@@ -75,7 +75,7 @@ extension DataStore {
         gameRequestListener = nil
     }
     
-    func setGameRequestDeletionListener() {
+    func setGameRequestDeletionListener(completion: @escaping() -> Void) {
         if gameRequestDeletionListener != nil {
             removeGameRequestDeletionListener()
         }
@@ -85,11 +85,7 @@ extension DataStore {
             .whereField("from", isEqualTo: localUserId)
             .addSnapshotListener { (snapshot, error) in
                 if let snapshot = snapshot {
-                    do {
-                        print("Game requests count:  \(snapshot.documents.count)")
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                        completion()
                 }
             }
     }
