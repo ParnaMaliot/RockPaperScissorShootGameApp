@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import UserNotifications
 import FirebaseMessaging
+import SwiftMessages
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -81,10 +82,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         saveTokenForUser(deviceToken: fcmToken)
     }
+    
+    private func showInAppNotification() {
+        let view = MessageView.viewFromNib(layout: .cardView)
+        var config = SwiftMessages.Config()
+        config.dimMode = .gray(interactive: true)
+        config.duration = .seconds(seconds: 2.0)
+        config.presentationStyle = .center
+        
+        view.configureContent(title: "New Game Request", body: "", iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "Accept") { _ in
+            
+        }
+        SwiftMessages.show(config: config, view: view)
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        if UIApplication.shared.applicationState == .active{
+            //show swift message
+            completionHandler([.sound])
+            return
+        }
         completionHandler([.alert, .badge, .sound])
     }
     
@@ -92,6 +111,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         switch response.actionIdentifier {
         case UNNotificationDefaultActionIdentifier:
             guard let dict = response.notification.request.content.userInfo as? [String: Any] else {return}
+            print(dict)
             print("Did click on notification")
         default:
             break

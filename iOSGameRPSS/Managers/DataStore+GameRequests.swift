@@ -84,7 +84,7 @@ extension DataStore {
             .collection(FirebaseCollections.gameRequests.rawValue)
             .whereField("from", isEqualTo: localUserId)
             .addSnapshotListener { (snapshot, error) in
-                if let snapshot = snapshot {
+                if snapshot?.documents.count == 0 {
                         completion()
                 }
             }

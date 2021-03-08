@@ -303,6 +303,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="WUg-TD-rFB"/>
                                 </constraints>
                                 <state key="normal" image="rock"/>
+                                <state key="selected" image="rock_selected"/>
                                 <connections>
                                     <action selector="btnRock:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="czZ-OB-VeF"/>
                                 </connections>
@@ -316,6 +317,7 @@
                                     <constraint firstAttribute="width" constant="80" id="yft-Zg-SaD"/>
                                 </constraints>
                                 <state key="normal" image="scisors"/>
+                                <state key="selected" image="scisors_selected"/>
                                 <connections>
                                     <action selector="btnScissors:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="Lvd-up-zux"/>
                                 </connections>
@@ -329,6 +331,7 @@
                                     <constraint firstAttribute="width" constant="80" id="YLz-Fm-P6G"/>
                                 </constraints>
                                 <state key="normal" image="paper"/>
+                                <state key="selected" image="paper_selected"/>
                                 <connections>
                                     <action selector="btnPaper:" destination="Jdr-kQ-Thb" eventType="touchUpInside" id="syj-fH-m7K"/>
                                 </connections>
@@ -531,9 +534,12 @@
         <image name="gameBackground" width="412.5" height="407.5"/>
         <image name="gradientBackground" width="375" height="812"/>
         <image name="paper" width="80" height="80"/>
+        <image name="paper_selected" width="80" height="80"/>
         <image name="random" width="80" height="80"/>
         <image name="rock" width="80" height="80"/>
+        <image name="rock_selected" width="80" height="80"/>
         <image name="scisors" width="80" height="80"/>
+        <image name="scisors_selected" width="80" height="80"/>
         <image name="sparring" width="655" height="231"/>
         <image name="splashlogo" width="660" height="317"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    
     @IBOutlet weak var winnerImage: UIImageView!
     @IBOutlet weak var lblResult: UILabel!
     @IBOutlet weak var lblWinner: UILabel!
@@ -18,24 +18,23 @@ class ResultViewController: UIViewController {
     var player: User?
     
     override func viewDidLoad() {
-        
-        
-        
         if let winner = game?.winner {
             super.viewDidLoad()
             lblWinner.text = winner.username
             let loser = game?.players.filter({$0.id != winner.id}).first
             lblLoser.text = loser?.username
+            winnerImage.image = UIImage(named: (winner.avatarImage)!)
         }
         
-        if let gameController = presentingViewController as? GameViewController {
-            gameController.dismiss(animated: true, completion: nil)
-        }
-//        winnerImage.image = UIImage(named: (player?.avatarImage)!)
+
     }
     
     @IBAction func btnHome(_ sender: UIButton) {
-        
+        if let gameController = presentingViewController as? GameViewController {
+            dismiss(animated: false) {
+                gameController.dismiss(animated: false, completion: nil)
+            }
+        }
     }
     
     @IBAction func btnReload(_ sender: UIButton) {
