@@ -34,7 +34,12 @@ class HomeViewController: UIViewController, AlertPresenter {
             guard let self = self else {return}
             self.getUsers()
         }
-        DataStore.shared.setGameRequestListener()
+        
+        if let request = PushNotificationManager.shared.getGameRequest() {
+            showGameRequestAlert(request)
+            PushNotificationManager.shared.clearVariable()
+        }
+        //DataStore.shared.setGameRequestListener()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,10 +59,7 @@ class HomeViewController: UIViewController, AlertPresenter {
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseIdentifier)
     }
     
-    @objc private func didReceiveGameRequest( _ notification: Notification) {
-        guard let userInfo = notification.userInfo as? [String : GameRequest] else {return}
-        guard let gameRequest = userInfo["GameRequest"] else {return}
-        
+    private func showGameRequestAlert(_ gameRequest: GameRequest) {
         let fromUserName = gameRequest.fromUsername ?? ""
         let alert = UIAlertController(title: "Game Request", message: "\(fromUserName) invited you for a game", preferredStyle: .alert)
         
@@ -71,6 +73,13 @@ class HomeViewController: UIViewController, AlertPresenter {
         alert.addAction(accept)
         alert.addAction(decline)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func didReceiveGameRequest( _ notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String : GameRequest] else {return}
+        guard let gameRequest = userInfo["GameRequest"] else {return}
+        showGameRequestAlert(gameRequest)
+        
     }
     
     private func getUsers() {

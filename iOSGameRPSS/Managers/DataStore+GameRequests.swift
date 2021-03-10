@@ -99,4 +99,27 @@ extension DataStore {
         let gameRequestRef = database.collection(FirebaseCollections.gameRequests.rawValue).document(gameRequest.id)
         gameRequestRef.delete()
     }
+    
+    func getGameRequestWithId(id: String, completion: ((_ gameRequest: GameRequest?, _ error: Error?) -> Void)?) {
+        
+        let gameRequestRef = database.collection(FirebaseCollections.games.rawValue).document(id)
+        
+        gameRequestRef.getDocument { (document, error) in
+            if let error = error {
+                completion?(nil, error)
+                return
+            }
+            if let document = document {
+                do {
+                    let gameRequest = try document.data(as: GameRequest.self)
+                    completion?(gameRequest, nil)
+                } catch (let error) {
+                    //This error is giving us the reason why the "try" decode failed
+                    print(error.localizedDescription)
+                    completion?(nil, error)
+                }
+            }
+
+        }
+    }
 }
