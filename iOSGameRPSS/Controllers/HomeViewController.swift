@@ -22,7 +22,18 @@ class HomeViewController: UIViewController, AlertPresenter {
         super.viewDidLoad()
         requestPushNotifications()
         title = "Welcome " + (DataStore.shared.localUser?.username ?? "")
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidReceiveGameRequestNotification"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveGameRequest(_:)), name: Notification.Name("DidReceiveGameRequestNotification"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(acceptGame(_:)),
+//                                               name: Notification.Name("AcceptGameRequestNotification"), object: nil)
+        //This is the same SWIFT func for the observers
+        NotificationCenter.default.addObserver(forName: Notification.Name("AcceptGameRequestNotification"),
+                                               object: nil, queue: nil) { [weak self] (notification) in
+            guard let userInfo = notification.userInfo as? [String:Any], let gameRequest = userInfo["GameRequest"] as? GameRequest else {return}
+            
+            self?.acceptGameRequest(gameRequest)
+        }
         setupTableView()
         setupAvatarView()
         getUsers()
@@ -39,7 +50,7 @@ class HomeViewController: UIViewController, AlertPresenter {
             showGameRequestAlert(request)
             PushNotificationManager.shared.clearVariable()
         }
-        //DataStore.shared.setGameRequestListener()
+        DataStore.shared.setGameRequestListener()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,12 +85,16 @@ class HomeViewController: UIViewController, AlertPresenter {
         alert.addAction(decline)
         present(alert, animated: true, completion: nil)
     }
+    //This is OBJC version, see above
+//    @objc private func acceptGame(_ notification: Notification) {
+//        guard let userInfo = notification.userInfo as? [String:GameRequest], let request = userInfo["GameRequest"] else {return}
+//        acceptGameRequest(request)
+//    }
     
-    @objc private func didReceiveGameRequest( _ notification: Notification) {
+    @objc private func didReceiveGameRequest(_ notification: Notification) {
         guard let userInfo = notification.userInfo as? [String : GameRequest] else {return}
         guard let gameRequest = userInfo["GameRequest"] else {return}
         showGameRequestAlert(gameRequest)
-        
     }
     
     private func getUsers() {
@@ -117,7 +132,6 @@ class HomeViewController: UIViewController, AlertPresenter {
                     }
                 }
             }
-            
         }
     }
     

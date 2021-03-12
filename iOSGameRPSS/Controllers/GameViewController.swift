@@ -14,6 +14,10 @@ class GameViewController: UIViewController {
     @IBOutlet weak var Scissors: UIButton!
     @IBOutlet weak var Rock: UIButton!
     @IBOutlet weak var Random: UIButton!
+    @IBOutlet weak var topHand: UIImageView!
+    @IBOutlet weak var bottomHand: UIImageView!
+    @IBOutlet weak var bottomHandConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topHandConstraint: NSLayoutConstraint!
     
     var game: Game?
     var localPlayer: User?
@@ -42,7 +46,10 @@ class GameViewController: UIViewController {
         shouldEnableButtons(enable: (updatedGame.state == .inprogress))
         gameStatus.text = updatedGame.state.rawValue
         game = updatedGame
-        checkForWinner(game: updatedGame)
+        animateMoves(game: updatedGame)
+        return
+//        checkForWinner(game: updatedGame)
+        
         if updatedGame.state == .finished && game?.winner == nil {
             DataStore.shared.removeGameListener()
             game?.winner = updatedGame.players.filter({$0.id == DataStore.shared.localUser?.id}).first
@@ -56,6 +63,66 @@ class GameViewController: UIViewController {
         Scissors.isEnabled = enable
         Paper.isEnabled = enable
         Random.isEnabled = enable
+    }
+    
+    private func animateMoves(game: Game) {
+        guard let localUserId = DataStore.shared.localUser?.id, let opponentUserId = game.players.filter({$0.id != localUserId}).first?.id else {return}
+        
+        let moves = game.moves
+        let myMove = moves[localUserId]
+        let otherMove = moves[opponentUserId]
+        
+        if myMove != .idle && otherMove != .idle {
+            //We will animate both hands at the same time back on board
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.bottomHandConstraint.constant = Moves.minimumY(isOpponent: false)
+                self.topHandConstraint.constant = Moves.minimumY(isOpponent: true)
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                } completion: { _ in
+                    //Winner hand should go little further and animate blood beneath, not with a CA layer. Look for UIView animate
+                }
+            }
+            return
+        }
+        
+        animateMyHandTo(move: myMove)
+        animateOtherHandTo(move: otherMove)
+        
+    }
+    
+    private func animateMyHandTo(move: Moves?) {
+        guard let move = move, move != .idle else {return}
+        
+        //If the bottom line doesn't work add it inside the UIView.animate closure
+        bottomHandConstraint.constant = Moves.maximumY
+        
+        UIView.animate(withDuration: 0.2) {
+            //Closure for animation
+            self.view.layoutIfNeeded()
+        } completion: { finished in
+            //closure when animation is done, finished flag argument (flag == bool)
+            if finished {
+                self.bottomHand.image = UIImage(named: move.imageName(isOpponent: false))
+            }
+        }
+    }
+    
+    private func animateOtherHandTo(move: Moves?) {
+        guard let move = move, move != .idle else {return}
+        
+        topHandConstraint.constant = Moves.maximumY
+        
+        UIView.animate(withDuration: 0.2) {
+            //Closure for animation
+            self.view.layoutIfNeeded()
+        } completion: { finished in
+            //closure when animation is done, finished flag argument (flag == bool)
+            if finished {
+                self.topHand.image = UIImage(named: move.imageName(isOpponent: false))
+            }
+        }
+        
     }
     
     private func checkForWinner(game: Game) {

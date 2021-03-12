@@ -25,11 +25,11 @@ extension DataStore {
     }
     
     private func createGameRequest(toUser: String, id: String) -> GameRequest? {
-        guard let localUserId = localUser?.id else {return nil}
+        guard let localUser = DataStore.shared.localUser, let localUserId = localUser.id else {return nil}
         return GameRequest(id: id,
                            from: localUserId,
                            to: toUser,
-                           createdAt: Date().toMiliseconds(), fromUsername: localUser?.username)
+                           createdAt: Date().toMiliseconds(), fromUsername: localUser.username)
     }
     
     func checkForExistingRequest(toUser: String, fromUser: String, completion: @escaping(_ exists: Bool, _ error: Error?) -> Void) {
@@ -85,7 +85,7 @@ extension DataStore {
             .whereField("from", isEqualTo: localUserId)
             .addSnapshotListener { (snapshot, error) in
                 if snapshot?.documents.count == 0 {
-                        completion()
+                    completion()
                 }
             }
     }
@@ -102,7 +102,7 @@ extension DataStore {
     
     func getGameRequestWithId(id: String, completion: ((_ gameRequest: GameRequest?, _ error: Error?) -> Void)?) {
         
-        let gameRequestRef = database.collection(FirebaseCollections.games.rawValue).document(id)
+        let gameRequestRef = database.collection(FirebaseCollections.gameRequests.rawValue).document(id)
         
         gameRequestRef.getDocument { (document, error) in
             if let error = error {
@@ -119,7 +119,6 @@ extension DataStore {
                     completion?(nil, error)
                 }
             }
-
         }
     }
 }

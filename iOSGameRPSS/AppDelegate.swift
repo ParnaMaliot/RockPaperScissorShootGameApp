@@ -98,7 +98,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                               buttonImage: nil,
                               buttonTitle: "Accept") { _ in
             //Click on Accept Button handler
-            
+            SwiftMessages.hide()
+            DataStore.shared.getGameRequestWithId(id: requestId) { (request, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if let request = request {
+                    NotificationCenter.default.post(name: Notification.Name("AcceptGameRequestNotification"),
+                                                    object: nil, userInfo: ["GameRequest" : request])
+                }
+            }
         }
         SwiftMessages.show(config: config, view: view)
     }
@@ -108,7 +118,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if UIApplication.shared.applicationState == .active{
             //show swift message
-            guard let dict = notification.request.content.userInfo as? [String:Any], let requestId = dict["id"] as? String, let fromUserName = dict["fromUsername"] as? String else {
+            guard let dict = notification.request.content.userInfo as? [String:Any],
+                  let requestId = dict["id"] as? String,
+                  let fromUserName = dict["fromUsername"] as? String else {
                 return
             }
             showInAppNotification(requestId: requestId, fromUsername: fromUserName)
@@ -127,7 +139,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 //            if let aps = dict["aps"] as? [String:Any] {
 //                //remote notification
 //            } else {
-//                //local notifiaciton
+//                //local notification
 //            }
             PushNotificationManager.shared.handlePushNotification(dict: dict)
             print(dict)
