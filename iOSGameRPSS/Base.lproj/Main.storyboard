@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xvN-hQ-eGt">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -29,11 +29,11 @@
             <objects>
                 <viewController id="AFC-ZF-gk5" customClass="SplashViewController" customModule="iOSGameRPSS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S2P-0O-Urx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashlogo" translatesAutoresizingMaskIntoConstraints="NO" id="HpP-yx-OFo">
-                                <rect key="frame" x="-123" y="290" width="660" height="316"/>
+                                <rect key="frame" x="-135" y="264" width="660" height="316"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="660" id="YLg-7S-ySl"/>
                                     <constraint firstAttribute="height" constant="316" id="hYj-95-EKm"/>
@@ -62,14 +62,14 @@
             <objects>
                 <viewController id="g8h-oG-R8k" customClass="WelcomeViewController" customModule="iOSGameRPSS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="USw-1D-zGp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="2sy-US-woa">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-Kc-eFt">
-                                <rect key="frame" x="176" y="433" width="62" height="30"/>
+                                <rect key="frame" x="164" y="407" width="62" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="62" id="7Hn-AD-J7e"/>
                                     <constraint firstAttribute="height" constant="30" id="qVZ-Be-f7x"/>
@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickyour user name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SWm-aN-Xmg">
-                                <rect key="frame" x="40" y="343" width="334" height="40"/>
+                                <rect key="frame" x="40" y="317" width="310" height="40"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="0.98039215686274506" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="zQL-7M-0eE"/>
@@ -120,24 +120,24 @@
             <objects>
                 <viewController id="Uk7-U8-v9v" customClass="HomeViewController" customModule="iOSGameRPSS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mzv-zt-F8x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sparring" translatesAutoresizingMaskIntoConstraints="NO" id="8R3-M5-nHM">
-                                <rect key="frame" x="-123" y="104" width="660" height="316"/>
+                                <rect key="frame" x="-135" y="104" width="660" height="316"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="316" id="1Mj-6x-sbs"/>
                                     <constraint firstAttribute="width" constant="660" id="Ub9-cO-NGP"/>
                                 </constraints>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efm-wt-7Ui">
-                                <rect key="frame" x="0.0" y="420" width="414" height="476"/>
+                                <rect key="frame" x="0.0" y="420" width="390" height="424"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoQ-Ju-Td3">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="426"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="374"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bWI-T9-QH5">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="374"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
@@ -151,10 +151,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ow1-Ot-ydt" userLabel="HeaderView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYR-hy-K5C">
-                                                <rect key="frame" x="16" y="0.0" width="324" height="30"/>
+                                                <rect key="frame" x="16" y="0.0" width="300" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="0T8-vC-suW"/>
                                                 </constraints>
@@ -163,7 +163,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Many rounds and cool prizes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5c-9K-G9J">
-                                                <rect key="frame" x="16" y="30" width="324" height="20"/>
+                                                <rect key="frame" x="16" y="30" width="300" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="pXf-jy-U8v"/>
                                                 </constraints>
@@ -172,7 +172,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL1-bd-V16">
-                                                <rect key="frame" x="350" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="326" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="YSr-qS-trl"/>
                                                     <constraint firstAttribute="height" constant="50" id="YbG-WR-IbW"/>
@@ -250,11 +250,11 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Jdr-kQ-Thb" customClass="GameViewController" customModule="iOSGameRPSS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7n-hC-gf5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="TdN-55-qyX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4F-hP-Gbf">
                                 <rect key="frame" x="20" y="94" width="0.0" height="0.0"/>
@@ -263,7 +263,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="014-ZO-hCM">
-                                <rect key="frame" x="344" y="44" width="50" height="50"/>
+                                <rect key="frame" x="320" y="44" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="6ZO-fz-TUI"/>
                                     <constraint firstAttribute="height" constant="50" id="772-od-pnQ"/>
@@ -278,27 +278,31 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameBackground" translatesAutoresizingMaskIntoConstraints="NO" id="dN4-RP-qRe">
-                                <rect key="frame" x="0.0" y="245.5" width="414" height="405"/>
+                                <rect key="frame" x="0.0" y="219.66666666666663" width="390" height="405"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="405" id="LWg-LJ-YzT"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blood" translatesAutoresizingMaskIntoConstraints="NO" id="8J1-uN-igO">
+                                <rect key="frame" x="75" y="327" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="steady_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Jl2-cD-Z8l">
-                                <rect key="frame" x="137" y="506" width="140" height="420"/>
+                                <rect key="frame" x="125" y="454" width="140" height="420"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="Lxc-fg-xiR"/>
                                     <constraint firstAttribute="height" constant="420" id="ZYU-OU-WmD"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="steady" translatesAutoresizingMaskIntoConstraints="NO" id="e7K-od-MbR">
-                                <rect key="frame" x="137" y="-90" width="140" height="420"/>
+                                <rect key="frame" x="125" y="-90" width="140" height="420"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="420" id="95i-Ek-cm0"/>
                                     <constraint firstAttribute="width" constant="140" id="Emx-FB-dDn"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4X-YK-bIu" userLabel="Random">
-                                <rect key="frame" x="167" y="772" width="80" height="80"/>
+                                <rect key="frame" x="155" y="720" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Ibc-f7-u1l"/>
                                     <constraint firstAttribute="height" constant="80" id="Qyn-Qe-arA"/>
@@ -309,7 +313,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uaz-Dx-qI5" userLabel="Rock">
-                                <rect key="frame" x="79" y="712" width="80" height="80"/>
+                                <rect key="frame" x="67" y="660" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="5jF-Uj-9CX"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Cjg-b6-Wct"/>
@@ -323,7 +327,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feS-9R-Yx7" userLabel="Scissors">
-                                <rect key="frame" x="255" y="712" width="80" height="80"/>
+                                <rect key="frame" x="243" y="660" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="AMs-hf-PF7"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Bdp-a9-Tgr"/>
@@ -337,7 +341,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-ht-BvX" userLabel="Paper">
-                                <rect key="frame" x="167" y="652" width="80" height="80"/>
+                                <rect key="frame" x="155" y="600" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="1mB-sW-Z58"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="2X8-kj-xFO"/>
@@ -385,9 +389,12 @@
                         <outlet property="Random" destination="n4X-YK-bIu" id="gO4-ei-05h"/>
                         <outlet property="Rock" destination="Uaz-Dx-qI5" id="6Zd-4O-3m3"/>
                         <outlet property="Scissors" destination="feS-9R-Yx7" id="1yo-WK-CI8"/>
+                        <outlet property="bloodImage" destination="8J1-uN-igO" id="ASE-8l-dDn"/>
                         <outlet property="bottomHand" destination="Jl2-cD-Z8l" id="a2y-aa-Gec"/>
                         <outlet property="bottomHandConstraint" destination="z9U-Gf-97l" id="0p7-mK-fFd"/>
                         <outlet property="gameStatus" destination="m4F-hP-Gbf" id="jZ0-d9-ZpV"/>
+                        <outlet property="myHandHeightConstraint" destination="ZYU-OU-WmD" id="ke9-I5-1ws"/>
+                        <outlet property="opponentHeightConstraint" destination="95i-Ek-cm0" id="wMK-EG-BrE"/>
                         <outlet property="topHand" destination="e7K-od-MbR" id="dbe-zc-618"/>
                         <outlet property="topHandConstraint" destination="rUV-F8-eF3" id="Q3L-mT-XlF"/>
                     </connections>
@@ -401,14 +408,14 @@
             <objects>
                 <viewController storyboardIdentifier="ResultViewController" id="ZdG-Jo-oXX" customClass="ResultViewController" customModule="iOSGameRPSS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aif-fD-od6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientBackground" translatesAutoresizingMaskIntoConstraints="NO" id="hPa-Sf-jag">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyq-4D-v05">
-                                <rect key="frame" x="119" y="219.5" width="176" height="176"/>
+                                <rect key="frame" x="107" y="193.66666666666663" width="176" height="176"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qUu-j5-3ff">
                                         <rect key="frame" x="0.0" y="0.0" width="176" height="176"/>
@@ -449,7 +456,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8S-9G-y4H">
-                                <rect key="frame" x="167" y="435.5" width="80" height="25"/>
+                                <rect key="frame" x="155" y="409.66666666666669" width="80" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="AfX-ER-MOa"/>
                                     <constraint firstAttribute="width" constant="80" id="oTH-f9-gcV"/>
@@ -459,7 +466,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGA-QT-xLE">
-                                <rect key="frame" x="174" y="486.5" width="66" height="52"/>
+                                <rect key="frame" x="162" y="460.66666666666669" width="66" height="52.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="ChS-tl-Rrx"/>
                                     <constraint firstAttribute="width" constant="66" id="HLT-nw-sUE"/>
@@ -472,7 +479,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8G-Ee-yZV">
-                                <rect key="frame" x="64" y="486.5" width="66" height="52"/>
+                                <rect key="frame" x="52" y="460.66666666666669" width="66" height="52.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="888-XE-F1Y"/>
                                     <constraint firstAttribute="height" constant="52" id="zBx-M3-Gi3"/>
@@ -483,7 +490,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0V-hf-M3b">
-                                <rect key="frame" x="284" y="486.5" width="66" height="52"/>
+                                <rect key="frame" x="272" y="460.66666666666669" width="66" height="52.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="5a3-v9-nh8"/>
                                     <constraint firstAttribute="width" constant="66" id="62I-Id-azY"/>
@@ -494,7 +501,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nW-s9-xRd">
-                                <rect key="frame" x="132" y="94.5" width="150" height="25"/>
+                                <rect key="frame" x="120" y="68.666666666666671" width="150" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ahe-qF-Ed9"/>
                                     <constraint firstAttribute="height" constant="25" id="eJW-nx-DTa"/>
@@ -504,7 +511,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loser" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUr-cl-WKf">
-                                <rect key="frame" x="132" y="144.5" width="150" height="25"/>
+                                <rect key="frame" x="120" y="118.66666666666669" width="150" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="lhk-Od-8GB"/>
                                     <constraint firstAttribute="width" constant="150" id="tba-zc-1kC"/>
@@ -555,11 +562,12 @@
         <segue reference="Ds7-nA-gQj"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="blood" width="215" height="217"/>
         <image name="buttonContinue" width="66" height="52"/>
         <image name="buttonDown" width="50" height="50"/>
         <image name="buttonHome" width="66" height="52"/>
         <image name="buttonReload" width="66" height="52"/>
-        <image name="gameBackground" width="412.5" height="407.5"/>
+        <image name="gameBackground" width="412.66665649414062" height="407.33334350585938"/>
         <image name="gradientBackground" width="375" height="812"/>
         <image name="paper" width="80" height="80"/>
         <image name="paper_selected" width="80" height="80"/>
@@ -569,9 +577,9 @@
         <image name="scisors" width="80" height="80"/>
         <image name="scisors_selected" width="80" height="80"/>
         <image name="sparring" width="655" height="231"/>
-        <image name="splashlogo" width="660" height="317"/>
-        <image name="steady" width="145.5" height="422"/>
-        <image name="steady_bottom" width="156" height="445"/>
+        <image name="splashlogo" width="659.66668701171875" height="317"/>
+        <image name="steady" width="145.33332824707031" height="422"/>
+        <image name="steady_bottom" width="156" height="444.66665649414062"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

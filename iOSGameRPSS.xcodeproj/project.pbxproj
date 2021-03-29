@@ -21,6 +21,7 @@
 		CD2FD96625F2AB3300117596 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2FD96525F2AB3300117596 /* AlertPresenter.swift */; };
 		CD2FD96B25F697B900117596 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = CD2FD96A25F697B900117596 /* SwiftMessages */; };
 		CD80425B25F939D60018035F /* PushNotificaitonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80425A25F939D60018035F /* PushNotificaitonsManager.swift */; };
+		CD9B34342612362600C091D8 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9B34332612362600C091D8 /* DeviceType.swift */; };
 		CD9F619825CB160A009A3D6D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD9F619725CB160A009A3D6D /* SnapKit */; };
 		CD9F619C25CB1C7C009A3D6D /* UITableviewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */; };
 		CD9F61A025CB21AB009A3D6D /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F619F25CB21AB009A3D6D /* GameRequest.swift */; };
@@ -55,6 +56,7 @@
 		CD2FD96125EE431100117596 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		CD2FD96525F2AB3300117596 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		CD80425A25F939D60018035F /* PushNotificaitonsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificaitonsManager.swift; sourceTree = "<group>"; };
+		CD9B34332612362600C091D8 /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		CD9F619B25CB1C7C009A3D6D /* UITableviewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableviewCellExtensions.swift; sourceTree = "<group>"; };
 		CD9F619F25CB21AB009A3D6D /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		CD9F61A225CB225B009A3D6D /* DataStore+GameRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+GameRequests.swift"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				CD0545F725D80F8E006C21EC /* Constants.swift */,
+				CD9B34332612362600C091D8 /* DeviceType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				CDAFBDEF25C86D6700E33E51 /* SceneDelegate.swift in Sources */,
 				CD9F61A325CB225B009A3D6D /* DataStore+GameRequests.swift in Sources */,
 				CD9F61A625CB2402009A3D6D /* Daye+Extensions.swift in Sources */,
+				CD9B34342612362600C091D8 /* DeviceType.swift in Sources */,
 				CD2FD95F25EC299B00117596 /* GameLogic.swift in Sources */,
 				CD05461825DD8867006C21EC /* Game.swift in Sources */,
 			);
