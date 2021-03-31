@@ -53,7 +53,7 @@ class GameViewController: UIViewController {
         game = updatedGame
         animateMoves(game: updatedGame)
         return
-//        checkForWinner(game: updatedGame)
+        //        checkForWinner(game: updatedGame)
         
         if updatedGame.state == .finished && game?.winner == nil {
             DataStore.shared.removeGameListener()
@@ -79,9 +79,10 @@ class GameViewController: UIViewController {
         
         if myMove != .idle && otherMove != .idle {
             //We will animate both hands at the same time back on board
-            animateMyHandTo(move: myMove)
-            animateOtherHandTo(move: otherMove)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            animateHandTo(move: myMove, isMyHand: true)
+            animateHandTo(move: otherMove, isMyHand: false)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.bottomHandConstraint.constant = Moves.minimumY(isOpponent: false)
                 self.topHandConstraint.constant = Moves.minimumY(isOpponent: true)
                 UIView.animate(withDuration: 0.3) {
@@ -90,7 +91,6 @@ class GameViewController: UIViewController {
                     if finished {
                         self.checkForWinner(game: game)
                     }
-                    
                 }
             }
             return
@@ -112,47 +112,45 @@ class GameViewController: UIViewController {
                 if isMyHand {
                     self.bottomHand.image = UIImage(named: move.imageName(isOpponent: !isMyHand))
                 } else {
-                    self.topHand.image = UIImage(named: move.imageName(isOpponent: !isMyHand))
+                    self.topHand.image = UIImage(named: move.imageName(isOpponent: true))
                 }
             }
         }
-
-        
     }
+//
+//    private func animateMyHandTo(move: Moves?) {
+//        guard let move = move, move != .idle else {return}
+//
+//        //If the bottom line doesn't work add it inside the UIView.animate closure
+//        bottomHandConstraint.constant = Moves.maximumY
+//
+//        UIView.animate(withDuration: 0.2) {
+//            //Closure for animation
+//            self.view.layoutIfNeeded()
+//        } completion: { finished in
+//            //closure when animation is done, finished flag argument (flag == bool)
+//            if finished {
+//                self.bottomHand.image = UIImage(named: move.imageName(isOpponent: false))
+//            }
+//        }
+//    }
     
-    private func animateMyHandTo(move: Moves?) {
-        guard let move = move, move != .idle else {return}
-        
-        //If the bottom line doesn't work add it inside the UIView.animate closure
-        bottomHandConstraint.constant = Moves.maximumY
-        
-        UIView.animate(withDuration: 0.2) {
-            //Closure for animation
-            self.view.layoutIfNeeded()
-        } completion: { finished in
-            //closure when animation is done, finished flag argument (flag == bool)
-            if finished {
-                self.bottomHand.image = UIImage(named: move.imageName(isOpponent: false))
-            }
-        }
-    }
-    
-    private func animateOtherHandTo(move: Moves?) {
-        guard let move = move, move != .idle else {return}
-        
-        topHandConstraint.constant = Moves.maximumY
-        
-        UIView.animate(withDuration: 0.2) {
-            //Closure for animation
-            self.view.layoutIfNeeded()
-        } completion: { finished in
-            //closure when animation is done, finished flag argument (flag == bool)
-            if finished {
-                self.topHand.image = UIImage(named: move.imageName(isOpponent: false))
-            }
-        }
-        
-    }
+//    private func animateOtherHandTo(move: Moves?) {
+//        guard let move = move, move != .idle else {return}
+//
+//        topHandConstraint.constant = Moves.maximumY
+//
+//        UIView.animate(withDuration: 0.2) {
+//            //Closure for animation
+//            self.view.layoutIfNeeded()
+//        } completion: { finished in
+//            //closure when animation is done, finished flag argument (flag == bool)
+//            if finished {
+//                self.topHand.image = UIImage(named: move.imageName(isOpponent: false))
+//            }
+//        }
+//
+//    }
     
     private func checkForWinner(game: Game) {
         guard let localUserId = DataStore.shared.localUser?.id, let opponentUserId = game.players.filter({$0.id != localUserId}).first?.id else {return}
@@ -166,9 +164,6 @@ class GameViewController: UIViewController {
         
         if myMove == .idle && otherMove == .idle {
             //Both players haven't move yet
-            animateHandTo(move: myMove, isMyHand: true)
-            animateHandTo(move: otherMove, isMyHand: false)
-
         } else if myMove == .idle {
             //Still waiting
         } else if otherMove == .idle {
@@ -178,47 +173,68 @@ class GameViewController: UIViewController {
             if let mMove = myMove, let oMove = otherMove {
                 //This will succeed only if the local user is a winner
                 //Other user will get a listener for the game with updated winner property
+                
+                //The space between the hand images
                 let space = abs((topHand.frame.origin.y + topHand.frame.height) - bottomHand.frame.origin.y)
-
+                
                 if mMove > oMove {
                     //Winner is mMove
-                    UIView.animate(withDuration: 0.5) {
-                        self.bottomHand.transform = CGAffineTransform(translationX: 0, y: -space)
-                    } completion: { finished in
-                        if finished {
-                            UIView.animate(withDuration: 0.5) {
-                                self.bloodImage.transform = .identity
-                                self.bottomHand.transform = .identity
-                            } completion: { finished in
-                                if finished {
-                                    self.setWinner(game: game)
-                                }
-                            }
-                        }
-                    }
+                    animate(hand: bottomHand, with: space, and: bloodImage, in: game)
+                    
+//                    UIView.animate(withDuration: 0.5) {
+//                        self.bottomHand.transform = CGAffineTransform(translationX: 0, y: -space)
+//                    } completion: { finished in
+//                        if finished {
+//                            UIView.animate(withDuration: 0.5) {
+//                                self.bloodImage.transform = .identity
+//                                self.bottomHand.transform = .identity
+//                            } completion: { finished in
+//                                if finished {
+//                                    self.setWinner(game: game)
+//                                }
+//                            }
+//                        }
+//                    }
                 }
                 else {
-                    UIView.animate(withDuration: 0.5) {
-                        self.topHand.transform = CGAffineTransform(translationX: 0, y: +space)
-                    } completion: { finished in
-                        if finished {
-                            UIView.animate(withDuration: 0.5) {
-                                self.bloodImage.transform = .identity
-                                self.topHand.transform = .identity
-                            } completion: { finished in
-                                if finished {
-                                    //self.setWinner(game: game)
-                                }
-                            }
-                        }
-                    }
+                    animate(hand: topHand, with: space, and: bloodImage, in: game)
                     
-                    
+//                    UIView.animate(withDuration: 0.5) {
+//                        self.topHand.transform = CGAffineTransform(translationX: 0, y: space)
+//                    } completion: { finished in
+//                        if finished {
+//                            UIView.animate(withDuration: 0.5) {
+//                                self.bloodImage.transform = .identity
+//                                self.topHand.transform = .identity
+//                            } completion: { finished in
+//                                if finished {
+//                                    //self.setWinner(game: game)
+//                                }
+//                            }
+//                        }
+//                    }
                     //Winner is oMove
                     //game.winner = opponentUser
                     //self.game?.winner = opponent
-                    if let _ = game.winner {
-                        continueToResults()
+                    //                if game.winner != nil {
+                    //                    continueToResults()
+                    //                }
+                }
+            }
+        }
+    }
+    
+    private func animate(hand: UIImageView, with space: CGFloat, and image: UIImageView, in game: Game) {
+        UIView.animate(withDuration: 0.5) {
+            hand.transform = CGAffineTransform(translationX: 0, y: space)
+        } completion: { finished in
+            if finished {
+                UIView.animate(withDuration: 0.5) {
+                    image.transform = .identity
+                    hand.transform = .identity
+                } completion: { finished in
+                    if finished {
+                        self.setWinner(game: game)
                     }
                 }
             }
@@ -228,11 +244,11 @@ class GameViewController: UIViewController {
     private func setWinner(game: Game) {
         guard let localUserId = DataStore.shared.localUser?.id else {return}
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        DataStore.shared.removeGameListener()
-        self.game?.winner = game.players.filter({$0.id == localUserId}).first
-        self.game?.state = .finished
-        DataStore.shared.updateGameMoves(game: self.game!)
-        self.continueToResults()
+            DataStore.shared.removeGameListener()
+            self.game?.winner = game.players.filter({$0.id == localUserId}).first
+            self.game?.state = .finished
+            DataStore.shared.updateGameMoves(game: self.game!)
+            self.continueToResults()
         }
     }
     
@@ -285,7 +301,7 @@ class GameViewController: UIViewController {
     @IBAction func btnRandom(_ sender: UIButton) {
         guard let localUserId = DataStore.shared.localUser?.id, var game = game  else {return}
         
-        var choices: [Moves] = Moves.allCases.filter {$0 != .idle}
+        let choices: [Moves] = Moves.allCases.filter {$0 != .idle}
         let move = choices.randomElement()
         
         game.moves[localUserId] = move
