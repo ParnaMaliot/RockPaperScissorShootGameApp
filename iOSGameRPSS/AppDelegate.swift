@@ -79,6 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
     }
     
+    func checkForEnabledPushNotifications(completion: @escaping(_ enabled: Bool) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                //let enabled = completion(settings.authorizationStatus == .authorized)
+                completion(settings.authorizationStatus == .authorized)
+            }
+        }
+    }
+    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         saveTokenForUser(deviceToken: fcmToken)
     }

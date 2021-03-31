@@ -179,7 +179,7 @@ class GameViewController: UIViewController {
                 
                 if mMove > oMove {
                     //Winner is mMove
-                    animate(hand: bottomHand, with: space, and: bloodImage, in: game)
+                    animate(hand: bottomHand, with: -space, and: bloodImage, in: game)
                     
 //                    UIView.animate(withDuration: 0.5) {
 //                        self.bottomHand.transform = CGAffineTransform(translationX: 0, y: -space)
@@ -196,7 +196,7 @@ class GameViewController: UIViewController {
 //                        }
 //                    }
                 }
-                else {
+                else if oMove > mMove {
                     animate(hand: topHand, with: space, and: bloodImage, in: game)
                     
 //                    UIView.animate(withDuration: 0.5) {
@@ -219,6 +219,8 @@ class GameViewController: UIViewController {
                     //                if game.winner != nil {
                     //                    continueToResults()
                     //                }
+                } else {
+                    //draw
                 }
             }
         }
@@ -234,7 +236,13 @@ class GameViewController: UIViewController {
                     hand.transform = .identity
                 } completion: { finished in
                     if finished {
-                        self.setWinner(game: game)
+                        if hand == self.bottomHand {
+                            self.setWinner(game: game)
+                        } else {
+                            if self.game?.winner != nil {
+                                self.continueToResults()
+                            }
+                        }
                     }
                 }
             }
@@ -270,7 +278,7 @@ class GameViewController: UIViewController {
         let exit = UIAlertAction(title: "Exit", style: .destructive) { [weak self] _ in
             
             if let game = self?.game, isExit {
-                DataStore.shared.updateGameStatus(game: self!.game!, newState: Game.GameState.finished.rawValue)
+                DataStore.shared.updateGameStatus(game: game, newState: Game.GameState.finished.rawValue)
             }
             self?.dismiss(animated: true, completion: nil)
         }
